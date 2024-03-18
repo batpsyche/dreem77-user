@@ -1,0 +1,84 @@
+<footer>
+  <div class="terms_footer">
+    <ul>
+    <li><a data-toggle="modal"  data-target="#myModal">RULES AND REGULATIONS
+    </a> © 2018-2019 </li>
+    <li class="flogo"> | <img src="{{footerLogo}}" alt="Logo"> </li>
+    </ul>
+  </div>
+
+
+  <!-- The Modal -->
+  <div class="modal termsadne_pp" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">THE SITE RULES AND REGULATIONS
+          </h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div [innerHTML]="terms " class="trmspop" >
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="modal changePasPopModal" id="changePass">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Change Password
+          </h4>
+        </div>
+
+        <!-- Modal body -->
+        <div  class="changePasPop" >
+          <form [formGroup]="chanPassForm"  (ngSubmit)="changePassword()">
+
+            <div class="form_row" >
+              <div class="form_box  col-sm-12">
+                <label>Old Password</label>
+                <input type="password" name="old_password" formControlName="old_password" class="input-box" [(ngModel)]="old_password"  md-autofocus required  >
+                <p class="alert alert-danger rightbarValidate" *ngIf="chanPassForm.controls.old_password.errors?.required && chanPassForm.controls.old_password.touched">Password is required</p>
+
+              </div>
+              <div class="form_box  col-sm-12">
+                <label >New Password</label>
+                <input type="password" name="newpassword" formControlName="newpassword"  class="input-box" [(ngModel)]="newpassword"    required>
+                <p *ngIf="chanPassForm.controls['newpassword'].invalid && (chanPassForm.controls['newpassword'].dirty ||  chanPassForm.controls['newpassword'].touched)"
+                   class="alert alert-danger rightbarValidate">
+                  <span *ngIf="chanPassForm.controls['newpassword'].errors.required">   New   Password is required</span>
+                  <span *ngIf="chanPassForm.controls['newpassword'].errors.pattern">
+New Password must contain must be 6 characters, 1 upper case letter, number           </span>
+                </p>
+
+              </div>
+              <div class="form_box  col-sm-12">
+                <label >Renew Password</label>
+                <input type="password" name="Renewpassword" formControlName="Renewpassword" class="input-box" [(ngModel)]="Renewpassword"  required>
+                <p class="alert alert-danger rightbarValidate" *ngIf="chanPassForm.value.Renewpassword !== chanPassForm.value.Renewpassword">Password does not match</p>
+              </div>
+
+            </div>
+
+            <div class="form_box  col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <button type="submit" class="btn btn-primary"   >Submit</button>
+            </div>
+
+
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>
+

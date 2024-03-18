@@ -1,0 +1,103 @@
+<!-- <nav class="sport-menu">
+  <span class="sport-menu__item">
+    <a class="sport-menu__link sport-menu__link--casino">
+      <span class="link-name">Sportsbook</span>
+    </a>
+  </span>
+
+  <span class="sport-menu__item">
+    <a class="sport-menu__link"> Cricket </a>
+  </span>
+
+  <span class="sport-menu__item">
+    <a class="sport-menu__link"> Football </a>
+  </span>
+
+  <span class="sport-menu__item">
+    <a class="sport-menu__link"> Tennis </a>
+  </span>
+
+  <span class="sport-menu__item">
+    <a class="sport-menu__link"> Horse Racing </a>
+  </span>
+
+  <span class="sport-menu__item">
+    <a class="sport-menu__link">
+      Greyhound Racing </a>
+  </span>
+
+  <span class="sport-menu__item">
+    <a class="sport-menu__link">
+      Exchange Game
+    </a>
+  </span>
+
+  <span class="sport-menu__item">
+    <a class="sport-menu__link sport-menu__link--casino">
+      <span class="link-name">Live Casino</span>
+    </a>
+  </span>
+  <span class="sport-menu__item ng-scope" ng-if="vm.hasLiveCasino">
+    <a class="sport-menu__link sport-menu__link--casino">
+      <span class="link-name">Slots Games</span>
+    </a>
+  </span>
+</nav> -->
+
+<nav class="sport-menu">
+
+  <ng-container *ngIf="AllSports$|async as allSports">
+    <ng-container *ngFor="let sports of allSports?.data?.list">
+      <ng-container *ngIf="sports?.sport_id !== '-4' && sports?.sport_id !== '7' && sports?.sport_id !== '4339' && 
+      sports?.sport_id !== '-5'&& sports?.sport_id !== '-3' && sports?.sport_id !== '-2' &&
+       sports?.sport_id !== '-1' && sports?.sport_id !== '-8' ">
+        <span class="sport-menu__item">
+          <a class="sport-menu__link" (click)="redirectToSelectedGame(sports)"> {{sports?.name}} </a>
+        </span>
+      </ng-container>
+    </ng-container>
+
+    <!-- <span class="sport-menu__item">
+      <a class="sport-menu__link" [routerLink]="['/dashboard/virtual-games']"> Brino Casino</a>
+    </span>
+
+    <span class="sport-menu__item">
+      <a class="sport-menu__link" [routerLink]="['/dashboard/brino-fantasy']"> Brino Fantasy</a>
+    </span>
+
+    <span class="sport-menu__item">
+      <a class="sport-menu__link" [routerLink]="['/dashboard/super-spade-games']"> Super Spade</a>
+    </span> -->
+
+    <!-- <span class="sport-menu__item">
+      <a class="sport-menu__link" [routerLink]="['/dashboard/betsoft']"> Betsoft</a>
+    </span>
+    <span class="sport-menu__item">
+      <a class="sport-menu__link" [routerLink]="['/dashboard/gamepool']"> Gamepool</a>
+    </span>   -->
+    <!-- <span class="sport-menu__item">
+      <a class="sport-menu__link" [routerLink]="['/dashboard/sa-games']">SA</a>
+    </span>   -->
+    <!-- <span class="sport-menu__item">
+      <a class="sport-menu__link" (click)="openEzugiLobby()">EZUGI</a>
+    </span> -->
+    <!-- <span class="sport-menu__item">
+      <a class="sport-menu__link" (click)="redirectToQTGameLobby()">QT</a>
+    </span> -->
+    <!-- <span class="sport-menu__item">
+      <a class="sport-menu__link" [routerLink]="['/dashboard/tvbet']">TvBet</a>
+    </span>
+     <span class="sport-menu__item">
+      <a class="sport-menu__link" [routerLink]="['/dashboard/supernowa']">Supernowa</a>
+    </span>
+     <span class="sport-menu__item">
+      <a class="sport-menu__link" [routerLink]="['/dashboard/all-game']">All Games</a> -->
+      <!-- <a class="sport-menu__link" (click)="getAllgameData()">All Games</a> -->
+    <!-- </span> -->
+     <!-- <span class="sport-menu__item">
+      <a class="sport-menu__link" (click)="redirectToSelected(-102)">EVOLUTION</a>
+    </span> -->
+
+  </ng-container>
+
+</nav>

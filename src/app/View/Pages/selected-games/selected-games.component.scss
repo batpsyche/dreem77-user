@@ -1,0 +1,96 @@
+.inplay .sport_blk {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.livecasino-box {
+    border: 1px solid rgb(90, 49, 107);
+    transition: all 0.5s ease 0s;
+    margin-bottom: 20px;
+}
+.btn15 {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    -webkit-box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+    // -webkit-box-shadow: rgba(1px, 1px, 3px, 0.3);
+    // -moz-box-shadow: rgba(1px, 1px,3px,0.3);
+    // box-shadow: rgba($color: #000000, $alpha: 1.0)
+    -moz-box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+.btn15 img {
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.btn15 .ovrly {
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.btn15 .buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.btn15 .buttons .fa {
+    background: #022c43;
+    box-shadow: 0 0 1px black;
+    border-radius: 0;
+    display: block;
+    line-height: 30px;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    width: 85px;
+    height: 30px;
+    position: relative;
+    transition: all 0.1s;
+    color: #FFF;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+.btn15 .buttons .fa-link {
+    left: -805%;
+}
+.btn15 .buttons .fa-search {
+    right: -805%;
+}
+.btn15:hover .buttons .fa-link {
+    left: 0;
+}
+.btn15:hover .buttons .fa-search {
+    right: 0;
+}
+.btn15:hover .ovrly {
+    opacity: 1;
+}
+.btn15 .fa-link:before {
+    content: 'Play Now' !important;
+}
+.btn15 .fa-search:before {
+    content: 'Play Now Free' !important;
+}
+a.fa.fa-link.blue-btn {
+    background-color: #04c6e3;
+}

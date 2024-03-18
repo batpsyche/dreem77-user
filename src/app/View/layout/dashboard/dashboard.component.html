@@ -1,0 +1,21 @@
+<app-header></app-header>
+
+<div class="content">
+    <top-bar [SIDEBAR]="sidebar"></top-bar>
+    <div class="boxed-layout-wrapper">
+        <app-sidebar [ngStyle]="{'display':(currentRoute === '/dashboard/virtual-games' 
+        || currentRoute === '/dashboard/brino-fantasy' || currentRoute === '/dashboard/tvbet'|| currentRoute === '/dashboard/all-game' || currentRoute === '/dashboard/supernowa') ?'none' :''} " #sidebar>
+        </app-sidebar>
+        <!--   <div class="load-box " *ngIf="this.matchModel.loading1">
+            <img id="mySpinner" src="assets/loginimages/loading1.gif">
+        </div>-->
+        <router-outlet></router-outlet>
+        <ng-container
+            *ngIf="currentRoute !== '/dashboard/virtual-games' && currentRoute !== '/dashboard/brino-fantasy' && currentRoute !== '/dashboard/tvbet' && currentRoute !== '/dashboard/supernowa' &&  currentRoute !== '/dashboard/all-game'">
+            <div class="rightmiddle_blk">
+                <app-rightbar></app-rightbar>
+            </div>
+        </ng-container>
+    </div>
+</div>
+<app-footer></app-footer>

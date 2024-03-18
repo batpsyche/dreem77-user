@@ -1,0 +1,128 @@
+
+<div class="right_atspartMid" >
+
+  <div class="right_atspartMidformds" *ngIf="matchList != undefined">
+    <div class="body_heading">
+      <h1 class="binding">Favourites</h1></div>
+    <div class="clearfix"></div>
+    <div class="market_tr" >
+      <div class="market_tr" *ngFor="let marketitem of matchList;i as index">
+        <div  class="row match-heading" >
+          <div class="col-lg-8 col-xs-12"><h4>{{marketitem.name}} <!--<span *ngIf="Day>1" class="commonbtn">{{Day}} Day </span>--> </h4>  </div>
+          <div class="col-lg-4 col-xs-12"><p>{{marketitem.match_date *1000|date:'medium'}}</p></div>
+
+        </div>
+        <div class="market-wrapper"  >
+          <div class="table-overflow">
+            <div class="table-responsive ajx_oldscs">
+              <table class="table market-listing-table">
+                <thead class="tablethead_top">
+                <tr>
+                  <th class="title"> <span class="ministar_ods"><i  (click)="setUnfavourite(marketitem.market_id)" class="fa fa-star ng-scope" aria-hidden="true"></i>{{marketitem.market_name}} </span> </th>
+
+                  <th class="title" colspan="2">   </th>
+                  <th class="back text-center">{{Back}}</th>
+                  <th class="lay text-center">{{Lay}}</th>
+                  <th class="title" colspan="2">   </th>
+                </tr>
+                <span class="goin-play OverODd" *ngIf="marketitem.status  == 'SUSPENDED'"><span class="glyphicon glyphicon-ok"></span>{{marketitem.status}}</span>
+                </thead>
+                <tbody>
+                <tr *ngFor="let marketInfo of marketitem.runner_json;index as i" class="matchbaklay_tr">
+
+                  <td class="running-cell team_name">
+                    <strong class="odds">{{marketInfo.name}}
+                    </strong>
+                    <span class="forstrongchang">    <strong [ngClass]="{'red':(marketInfo.winloss+ this.matchModel.calculateProfitLossSelection(marketInfo.selectionId,marketitem.market_id)).toFixed(2)<0,'green':(marketInfo.winloss+ this.matchModel.calculateProfitLossSelection(marketInfo.selectionId,marketitem.market_id)).toFixed(2)>0}"
+                    >{{(marketInfo.winloss+ this.matchModel.calculateProfitLossSelection(marketInfo.selectionId,marketitem.market_id)).toFixed(2)}}</strong></span>
+                  </td>
+                  <td class="back td_btn btn_gray unhighlighted "
+                      [ngClass]="{'callYlCss':marketInfo.back[2]==undefined?'':marketInfo.back[2].selected,'betting-disableds':(marketitem.is_visible=='0' ) }">
+                    <strong class="odds">{{(marketInfo.back[2] !=undefined?marketInfo.back[2].price :'')}}</strong>
+                    <div class="size">
+                      <span>{{(marketInfo.back[2] !=undefined?marketInfo.back[2].size:'' )}}</span>
+                    </div>
+                  </td>
+                  <td class="back td_btn btn_gray unhighlighted "
+                      [ngClass]="{'callYlCss':marketInfo.back[1]==undefined?'':marketInfo.back[1].selected,'betting-disableds':(marketitem.is_visible=='0' ) }">
+                    <strong class="odds">{{(marketInfo.back[1] !=undefined?marketInfo.back[1].price:'' )}}</strong>
+                    <div class="size">
+                      <span>{{(marketInfo.back[1] !=undefined?marketInfo.back[1].size:'' )}}</span>
+                    </div>
+                  </td>
+
+
+                  <td class="back backtd blue_bg td_btn" *ngIf=" true"
+                      (click)="getOddValue((marketInfo.back[0].price).toFixed(2),1,marketInfo.name,marketInfo.selectionId,marketitem.marketid,i,marketitem);" [ngClass]="{'callYlCss':marketInfo.back[0]==undefined?'':marketInfo.back[0].selected ,'betting-disableds':(marketitem.is_visible=='0' )}">
+
+                    <strong class="" >{{(marketInfo.back[0] !=undefined?marketInfo.back[0].price:'' )}}</strong>
+                    <div class="size">
+                      <span>{{(marketInfo.back[0] !=undefined?marketInfo.back[0].size:'' )}}</span>
+                    </div>
+                  </td>
+                  <td *ngIf="marketitem.is_auto=='M'"                                                [ngClass]="{'betting-disableds':(marketitem.isBetAllowedOnManualMatchOdds==0 ||  marketInfo.active==1),'callYlCss':marketInfo.back[0].selected ,'betting-disableds':(marketitem.is_visible=='0' )}"
+                      class="back backtd blue_bg td_btn"
+                      (click)="marketInfo.IsShow=true;getOddValueManual((marketInfo.back[0].price).toFixed(2),marketitem.volumeLimit[0].oddsLimit,0,marketInfo.name+'(B)',marketInfo.id,marketInfo.uniqueId,marketitem.marketid,i,marketInfo.active,marketitem);">
+                    <!--marketitem.IsMatchDisable-->
+                    <strong class="odds">
+                      {{(marketitem.isBetAllowedOnManualMatchOdds==0 ||  marketInfo.active==1) ? '' : getManulaPrice(marketInfo.back[0].price,marketitem.IsRs)}}</strong>
+
+                    <span class="rowsuspend" *ngIf="marketInfo.active==1 && marketitem.isBetAllowedOnManualMatchOdds!=0"><b>SUSPENDED</b></span>
+                    <span *ngIf="index==0 && marketitem.isBetAllowedOnManualMatchOdds==0" class="fullSuspend"><b>SUSPENDED</b></span>
+                  </td>
+                  <td *ngIf="marketitem.is_auto=='M'"                                                [ngClass]="{'betting-disableds':(marketitem.isBetAllowedOnManualMatchOdds==0 ||  marketInfo.active==1),'callYlCss':marketInfo.back[0].selected ,'betting-disableds':(marketitem.is_visible=='0' ) }"
+                      class="lay laytd pink_bg td_btn"
+                      (click)="marketInfo.IsShow=true;getOddValueManual((marketInfo.lay[0].price).toFixed(2),marketitem.volumeLimit[0].oddsLimit,0,marketInfo.name+'(B)',marketInfo.id,marketInfo.uniqueId,marketitem.marketid,i,marketInfo.active,marketitem);">
+                    <!--marketitem.IsMatchDisable-->
+                    <strong class="odds">
+                      {{(marketitem.isBetAllowedOnManualMatchOdds==0 ||  marketInfo.active==1) ? '' : getManulaPrice(marketInfo.lay[0].price,marketitem.IsRs)}}</strong>
+
+                    <span class="rowsuspend" *ngIf="marketInfo.active==1 && marketitem.isBetAllowedOnManualMatchOdds!=0"><b>SUSPENDED</b></span>
+                    <span *ngIf="index==0 && marketitem.isBetAllowedOnManualMatchOdds==0" class="fullSuspend"><b>SUSPENDED</b></span>
+                  </td>
+                  <td class="lay laytd pink_bg td_btn" *ngIf=" true"
+                      (click)="getOddValue((marketInfo.lay[0].price).toFixed(2),0,marketInfo.name,marketInfo.selectionId,marketitem.marketid,i,marketitem);" [ngClass]="{'callCYanCss':marketInfo.lay[0]==undefined?'':marketInfo.lay[0].selected ,'betting-disableds':(marketitem.is_visible=='0' ) }">
+
+                    <strong class=""
+                    >{{(marketInfo.lay[0] !=undefined?marketInfo.lay[0].price:'' )}}</strong>
+                    <div class="size">
+                      <span>{{(marketInfo.lay[0] !=undefined?marketInfo.lay[0].size:'')}}</span>
+                    </div>
+
+                  </td>
+
+                  <td class="back td_btn btn_gray unhighlighted"
+                      [ngClass]="{'callCYanCss':marketInfo.lay[1]==undefined?'':marketInfo.lay[1].selected ,'betting-disableds':(marketitem.is_visible=='0' ) }">
+                    <strong class="odds">{{(marketInfo.lay[1] !=undefined?marketInfo.lay[1].price:'' )}}</strong>
+                    <div class="size">
+                      <span>{{(marketInfo.lay[1] !=undefined?marketInfo.lay[1].size:'' )}}</span>
+                    </div>
+                  </td>
+                  <td class="back td_btn btn_gray unhighlighted "
+                      [ngClass]="{'callCYanCss':marketInfo.lay[2]==undefined?'':marketInfo.lay[2].selected ,'betting-disableds':(marketitem.is_visible=='0' )}">
+                    <strong class="odds">{{(marketInfo.lay[2] !=undefined ?marketInfo.lay[2].price:'' )}}</strong>
+                    <div class="size">
+                      <span>{{(marketInfo.lay[2] !=undefined ?marketInfo.lay[2].size :'')}}</span>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </div>
+
+</div>
+
+
+
+
+
+

@@ -1,0 +1,146 @@
+<div class="right_atspart">
+  <h1 class="binding">Account Statement </h1>
+
+  <form name="Master">
+    <div class="row">
+      <div class=" row col-lg-12 col-md-12 col-sm-12 ">
+
+
+        <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12 padding">
+          <label>From Date </label>
+          <input type="text"
+                 class="form-control"
+                 [ngModelOptions]="{standalone: true}"
+                 #dp="bsDatepicker"
+                 [(ngModel)]="fromDateValue"
+                 bsDatepicker [(bsValue)]="fromDateValue">
+
+        </div>
+        <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12 padding">
+          <label>To Date </label>
+          <input type="text"
+                 class="form-control"
+                 [ngModelOptions]="{standalone: true}"
+                 #dp="bsDatepicker"
+                 [(ngModel)]="toDateValue"
+                 bsDatepicker [(bsValue)]="toDateValue">
+
+        </div>
+        <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12 padding">
+            <label>Filter</label>
+            <select [(ngModel)]="P_LFilter"    [ngModelOptions]="{standalone: true}" class="form-control inputCrl">
+              <option value="ALL">All</option>
+              <option value="FC">Free Chip</option>
+              <option value="PL">P & L</option>
+              <option value="S">Settlement</option>
+            </select>
+        </div>
+
+
+        <div class="form-group  col-lg-4 col-md-4 col-sm-12 col-xs-12 padding btn_out_margin btn_color_out">
+          <label class="forblan_label">&nbsp;</label>
+          <button type="button" class="btn btn-primary" (click)="getAcountStatement(1);">Search</button>
+          <button type="button" class="btn btn-primary" (click)="ResetAll();">Reset</button>
+          <button type="button" class="btn btn-primary" (click)="downloadCsv();">Download CSV</button>
+
+
+        </div>
+
+        <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12 padding btn_out_margin btn_color_out"
+             *ngIf="showHistory">
+          <button type="button" class="btn btn-primary" (click)="back();">Back</button>
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </form>
+
+
+  <div class="row">
+    <!-- end of Tab -->
+    <div class="col-lg-12 col-md-12 col-sm-12 ">
+      <div class="lst_master_top clearfix">
+        <div class="usertable_area clearfix top_table_form member_listing">
+
+          <div class="onepagehitdiv  table-responsive login_table" *ngIf="accountStatementData != null">
+
+            <table class="table onepagehit table-condensed table-striped  my-market">
+              <thead>
+              <tr class="">
+                <th>S No.</th>
+                <th>Date</th>
+                <th>UserName</th>
+                <th>Narration	</th>
+                <th>Credit/Debit	</th>
+                <th>Balance	</th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let GetchipData of accountStatement | paginate: config;trackBy: trackByFn;let i=index;">
+                <td>{{(page-1)*config.itemsPerPage+i+1}}</td>
+                <td >{{GetchipData.date *1000|date:'medium'}}</td>
+
+                <td >{{GetchipData.user_name}}</td>
+                <td >{{GetchipData.description}}</td>
+
+                <td [ngClass]="{'green':GetchipData.credit_debit>0,'red':GetchipData.credit_debit<0}">{{GetchipData.credit_debit}}</td>
+                <td [ngClass]="{'green':GetchipData.balance>0,'red':GetchipData.balance<0}">{{GetchipData.balance}}</td>
+
+
+              </tr>
+              </tbody>
+            </table>
+            <div class="col-lg-12 col-md-12 col-sm-12 " *ngIf="false">
+              <div class="row">
+
+
+
+                <div class="total-box fornto_vod clearfix">
+                  <div class="col-sm-6">
+                    <h3 class="total-green">Total CreditDebit: <span
+                      [ngClass]="{'green':creditDebitSum>0,'red':creditDebitSum<0}"> {{creditDebitSum}}</span></h3>
+                  </div>
+                  <div class="col-sm-6">
+                    <h3 class="total-green">Total Debit: <span
+                      [ngClass]="{'green':balanceSum>0,'red':balanceSum<0}">{{balanceSum }}</span></h3>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+        </div>
+
+        <div class="row" *ngIf="accountStatement != null">
+          <div class="col-sm-12">
+
+            <ng-container *ngIf="config.totalItems>this.config.itemsPerPage">
+              <pagination-controls  (pageChange)="pageChange($event)"
+                                    class="my-pagination"></pagination-controls>
+            </ng-container>
+
+          </div>
+
+        </div>
+        <div class="row" *ngIf="accountStatement == null" >
+          <div class="col-sm-12" >
+            <p>No Record Found</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>

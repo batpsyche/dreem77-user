@@ -1,0 +1,103 @@
+<div class="left_menupart">
+    <nav id="menu2">
+        <div class="menus_allwapper">
+            <ul class="menu_wapper SecondLevl" [ngClass]="{'SecondActive':(SecondLevl==true )}">
+                <li><a href="javascript:void(0)" (click)="gotoFavorite()"> 
+                    <!-- <img src="assets/loginimages/star.png"> -->
+                        Favourites</a></li>
+
+                <li>
+                    <a (click)="GetSoprtName();setCricketId()" class="home-link">
+                        <!-- <i class="fa fa-home"></i>  -->
+                        <span class="link-name ng-scope" translate="">Sports</span>
+                    </a>
+                </li>
+                <li class="sport-typebackgroun-{{this.matchModel.SportName}}" *ngIf="SelectedSport != undefined">
+                    <a class="home-link">
+                        <span class="link-name ng-scope" translate="">
+                            <!-- <img src="assets/loginimages/{{SelectedSport.sport_id}}.png"> -->
+                            {{SelectedSport.name}}</span>
+                    </a>
+                </li>
+                <li (click)="previous() "><a class="sport-typepreveious-{{this.matchModel.SportName}}"
+                        href="javascript:void(0)">
+                        <!-- <i class="fa fa-angle-left" aria-hidden="true"></i> -->
+                         Previous</a></li>
+                <li id="s2{{selectedSport}}" class="lv{{selectedSport}} sport-type-{{this.matchModel.SportName}}"
+                    class="submenu" *ngFor="let series of GetSeriesData">
+
+                    <a (click)="accordionLv2 = series.series_id;getMatchLst(series.sport_id,series.series_id)"
+                        href="javascript:void(0)">{{series.name}} 
+                        <!-- <i class="fa fa-angle-right" aria-hidden="true"></i> -->
+                    </a>
+
+                </li>
+            </ul>
+
+            <ul class="menu_wapper firstlevl" [ngClass]="{'thirdLevlActive':(thirdLevlActive==true )}">
+
+                <li>
+                    <a href="javascript:void(0)" (click)="goToInplay()">
+                        <!-- <img src="assets/loginimages/home.png"> &nbsp;  -->
+                        Home
+                    </a>
+                </li>
+
+                <li><a href="javascript:void(0)" (click)="gotoFavorite()"> 
+                    <!-- <img src="assets/loginimages/star.png"> -->
+                        Favourites</a></li>
+                <li *ngFor="let cups of staticCup"><span><a href="javascript:void(0)"
+                            (click)="gotoUserMatchOddsPage(cups)"> <img src="assets/loginimages/cup.png">{{cups.name}}
+                        </a></span></li>
+
+                <li id="si{{'cups'}}" class="submenu">
+                    <a href="javascript:void(0)"
+                        (click)="selectedSport={sport_id:'cup',name:'Cups'};getMatchLst('cup',undefined);reset();">
+                        <span>
+                            <!-- <img src="assets/loginimages/cup.png" alt="cup"> -->
+                            {{'Cups'}}
+                        </span>
+                    </a>
+                </li>
+                <li id="si{{displyData.sport_id}}" class="submenu" *ngFor="let displyData of FsportData">
+
+                    <a href="javascript:void(0)" (click)="selectedSport=displyData;getSeriesLst(displyData);reset();">
+                        <span> 
+                            <!-- <img src="assets/loginimages/{{displyData.sport_id}}.png">  -->
+                            {{displyData.name}}
+                        </span></a>
+                </li>
+            </ul>
+
+            <ul class="menu_wapper ThirdLevl subactive lav2{{selectedSport}}">
+                <li><a href="javascript:void(0)" (click)="gotoFavorite()"> 
+                    <!-- <img src="assets/loginimages/star.png"> -->
+                        Favourites</a></li>
+
+                <li>
+                    <a (click)="GetSoprtName()" class="home-link">
+                        <!-- <i class="fa fa-home"></i>  -->
+                        <span class="link-name ng-scope" translate="">Sports</span>
+                    </a>
+                </li>
+                <li class="sport-typebackgroun-{{this.matchModel.SportName}}" *ngIf="SelectedSport != undefined">
+                    <a class="home-link">
+                        <span class="link-name ng-scope" translate="">
+                            <!-- <img src="assets/loginimages/{{SelectedSport.sport_id}}.png"> -->
+                                {{SelectedSport.name}}</span>
+                    </a>
+                </li>
+                <li class="prv lv2{{selectedSport}}" (click)="previous2(SelectedSport);"><a href="javascript:void(0)"
+                        class="sport-typepreveious-{{this.matchModel.SportName}}">
+                        <!-- <i class="fa fa-angle-left"aria-hidden="true"></i> -->
+                         Previous
+                        </a></li>
+                <li class="lav2{{selectedSport}} sport-type-{{this.matchModel.SportName}}"
+                    *ngFor="let matches of GetMatchData"><a (click)="gotoUserMatchOddsPage(matches)"
+                        href="javascript:void(0)">{{matches.name}}</a></li>
+            </ul>
+        </div>
+
+    </nav>
+</div>
+

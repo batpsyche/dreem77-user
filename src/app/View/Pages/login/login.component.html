@@ -1,0 +1,52 @@
+
+<div id="mainpage clearfix" >
+
+
+
+  <div class="jdmlimiter login login_blk"  [style.backgroundImage]="'url('+ bg_logo +')'">
+    <div class="jmbContainer">
+      <div class="wrap">
+        <div class="login-box-body" >
+          <img src="{{logo}}" alt="Logo"/>
+
+          <form class="navbar-form" name="userForm" (ngSubmit)="onSubmit()" autocomplete novalidate>
+            <div class="login-error" *ngIf="showGreeting">
+              {{message}}
+            </div>
+            <div class="form-group has-feedback" >
+              <input type="text" [(ngModel)]="user_name" name="username" id="username" class="form-control"  required="required" placeholder="User name" autofocus/>
+            </div>
+            <div class="form-group has-feedback" >
+              <input type="password" [(ngModel)]="password" name="password" class="form-control"  placeholder="Password" required/>
+            </div>
+            <input type="hidden" name="recaptchaResponse" [(ngModel)]="g_captcha" id="recaptchaResponse" />
+            <div class="form-group has-feedback">
+              <button type="submit" class="btn btn-default login-btn1" >
+                <span class=" glyphicon glyphicon-log-in"></span>Login</button>
+              <a href="{{apkUrl}}" class="login100-form-btn" style="margin-top: 10px" *ngIf="is_show_apk == '1'">
+                <span class="fa fa-download blink_me"></span>  APK
+              </a>
+              <a class="login100-form-btn" style="margin-top: 10px" *ngIf="mobile != undefined || mobile != null">
+                <span class="socialIcon"><img src="{{social_image}}"></span>
+                <strong style="font-size: 21px;">+</strong> {{phone_no}}
+
+              </a>
+            </div>
+          </form>
+         
+        </div>
+
+      </div>
+      
+    </div>
+    <div class="login-footer-bottom">
+      <div class="powerd"> 
+        <span class="d-block" style="font-size: 16px; margin-bottom:20px;">This site is only for Fun</span>
+       Rules & Regulations © 2016-2020 <img style="    max-width: 130px;" src="{{footerLogo}}"></div>
+   </div>
+  </div>
+ 
+
+</div>
+
+

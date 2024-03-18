@@ -1,0 +1,43 @@
+.headerinner_right ul {
+  margin-bottom: 0;
+  margin: 7px 0px;
+}
+.enter_mttop input.form-control {
+  border-radius: 0px;
+}
+.navbar-dark .navbar-nav a {
+  font-size: 13px;
+}
+.dropdown-menu.dropdown-menu-right.show a{
+color:black;
+
+}
+.a.dropdown-item:hover {
+  background: #0f2327;
+  color: #fff;
+  transition: all 1s;
+}
+.time_drop .show>a {
+  padding: 7px;
+  margin-bottom: 1px;
+  background: #fff;
+  font-size: 13px;
+  color: #1f5058;
+}
+
+.show>a {
+  outline: 0;
+}
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: .25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background: 0 0;
+  border: 0;
+}
+

@@ -1,0 +1,77 @@
+
+
+<div class="right_bodyarea">
+  <div class="right_bodyareainner">
+    <div class="body_heading">
+      <h2>Bets Market</h2></div>
+
+    <div class="row">
+      <div class="col-sm-12">
+
+        <div class="usertable_area">
+          <div class="table-responsive">
+            <table class="table">
+
+              <tbody>
+              <tr>
+                <th>S No.</th>
+                <th>Settled</th>
+                <th>Description</th>
+                <th>Type	</th>
+                <th>Odds	</th>
+                <th>Stack	</th>
+                <th>Profit/Loss	</th>
+                <th>Ip Address	</th>
+
+              </tr>
+              <tr *ngFor="let bets of betHistory;trackBy: trackByFn;let index=index; ">
+                <td>{{index+1}}</td>
+                <td >{{bets.match_name}}<br>{{bets.selection_name}}-{{bets.market_name}}<!--<br>Bet ID:{{bets.bet_id}}-->|Placed:{{bets.created_at *1000 |date}}	</td>
+
+                <td> {{bets.selection_name}}	</td>
+                <td>{{bets.is_back == '1'?'Back':'Lay'}}	</td>
+                <td>{{bets.odds}}	</td>
+                <td>{{bets.stack}}	</td>
+                <td [ngClass]="{'green':bets.p_l>0,'red':bets.p_l<0}">{{bets.p_l}}	</td>
+                <td>{{bets.ip_address}}	</td>
+              </tr>
+
+
+
+
+              </tbody></table>
+
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+    <div class="row" *ngIf="betHistory != undefined && false">
+      <div class="col-sm-12">
+
+        <ng-container *ngIf="config.totalItems>10">
+          <pagination-controls (pageChange)="pageChange($event)"
+                               class="my-pagination"></pagination-controls>
+        </ng-container>
+
+      </div>
+
+    </div>
+    <div class="row" *ngIf="betHistory != undefined">
+      <div class="col-sm-12" *ngIf="betHistory == ''">
+        <p>No Record Found</p>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+
+

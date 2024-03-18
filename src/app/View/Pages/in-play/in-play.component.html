@@ -1,0 +1,353 @@
+<div class="right_atspartMid ng-scope">
+    <div class="padding">
+        <div class="col-md-12 inplay">
+            <!-- <div class="marque_headpart">
+                <marquee>{{matchModel?.marqueText}} </marquee>
+            </div> -->
+            <div class="sport_blk newdesign" style="display:none">
+                <div>
+
+                  <!-- Banner content -->
+                <div class="banner-content">
+                  <!-- Your banner HTML content goes here -->
+                  <img src="/assets/images/Banner_Desktop_View.jpg" alt="Banner Image" />
+              </div>
+
+                    <h1 class="binding">{{'Home'}} </h1>
+
+
+                    <div class="bet_table ads_vjtab  table-bordered">
+                        <div class="">
+                            <table class="table ">
+
+                                <tr class="blank_blk hidden-xs top_xtow">
+                                    <td class="mttd1"></td>
+                                    <td class="mttd2">&nbsp;</td>
+
+
+                                    <td class="mttd3">
+                                        <div class="betright">
+                                            <div class="betbox">1</div>
+                                            <div class="betbox">x</div>
+                                            <div class="betbox">2</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <ng-container *ngIf="InPlay$ | async as inPlayGames">
+                                    <!-- *ngFor="let match of GetMatchData |orderBy:'match_date';trackBy:trackByFn" -->
+                                    <ng-container *ngFor="let match of inPlayGames?.data;">
+                                        <tr>
+                                            <td class="mttd1">
+                                                <!-- <img src="assets/loginimages/{{match.sport_id}}.png" alt="img"> &nbsp; -->
+                                                <a (click)="gotoUserMatchOddsPage(match)">{{match.name}}</a>
+                                            </td>
+
+                                            <td class="mttd2" [ngClass]="{'betting-disableds':(match.is_visible=='0' )}">
+
+                                                <span *ngIf="match.inplay">
+                          <i *ngIf="match.inplay " class="fa fa-television" ></i>
+                          <a class="fancyBtn" *ngIf="match.is_fancy == 1" (click)="gotoUserMatchOddsPage(match)">
+                            <span class="commonbtn">Fancy</span>
+                                                </a>
+                                                </span>
+
+                                                <span *ngIf="match.inplay ">{{match.match_date | date : 'dd MMM, HH:mm'}}
+                          <a class="fancyBtn" *ngIf="match.is_fancy==1" (click)="gotoUserMatchOddsPage(match)">
+                            <span class="commonbtn">Fancy</span></a>
+                                                </span>
+
+
+                                            </td>
+
+
+                                            <td class="mttd3" [ngClass]="{'betting-disableds':(match.is_visible=='0' )}">
+                                                <div class="betright" *ngIf="match.runner_json != null">
+
+                                                    <div class="betbox">
+                                                        <a class="td_btn blue_btn">
+                              {{match.runner_json[0] == undefined ? 0 : match.runner_json[0].back[0].price}}
+                            </a>
+                                                        <a class="td_btn pink_btn" href="javascript:void(0)">
+                              {{match.runner_json[0] == undefined ? 0 : match.runner_json[0].lay[0].price }}
+                            </a>
+                                                    </div>
+
+
+                                                    <div class="betbox" class="betbox">
+                                                        <a class="td_btn blue_btn">
+                              {{match.runner_json[2] == undefined ? '--' : match.runner_json[2].back[0].price}}
+                            </a>
+                                                        <a ng-init="SetCommonProperty(match.runner_json[2].id,match)" class="td_btn pink_btn">
+                              {{match.runner_json[2] == undefined ? '--' : match.runner_json[2].lay[0].price}}
+                            </a>
+                                                    </div>
+
+
+                                                    <div class="betbox">
+                                                        <a class="td_btn blue_btn">
+                              {{match.runner_json[1].back[0].price == undefined ? 0 :
+                              match.runner_json[1].back[0].price}}
+                            </a>
+                                                        <a class="td_btn pink_btn">{{match.runner_json[1].lay[0].price
+                              == undefined ? 0 : match.runner_json[1].lay[0].price}}</a>
+                                                    </div>
+                                                    <span *ngIf="match.status=='SUSPENDED' || match.status=='CLOSED'" [ngClass]="{'mat-stat':(match.inplay && match.status=='OPEN'),'css-suspend1':(match.status=='SUSPENDED' || match.status=='CLOSED')}">
+                            <i *ngIf="match.inplay && match.status=='OPEN'" class="fa fa-play-circle"
+                              style="color: green;"></i>
+                            <p class="suspendecp">
+                              {{match.status == 'OPEN' ? match.inplay ? "In-Play" : "" :
+                              match.status}}
+                            </p>
+                          </span>
+                                                </div>
+
+
+                                            </td>
+
+
+                                        </tr>
+                                    </ng-container>
+
+                                    <ng-container *ngIf="inPlayGames?.data?.length == 0">
+                                        <tr>
+                                            <td colspan="7" class="NorecordF">No Record Found.</td>
+                                        </tr>
+                                    </ng-container>
+                                </ng-container>
+
+
+                            </table>
+                            <div *ngIf="!(InPlay$ | async)" style="text-align: center;">Loading..</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Casino Games -->
+            <div class="sport_blk newdesign" style="background-color: #e4e5e6;">
+                <ng-container>
+                    <!-- <a (click)="gotoUserMatchOddsPage(game)">
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/{{game.match_id}}.png" class="img-fluid">
+              <div class="casinoicons-title"> {{game?.name}} </div>
+              <div class="new-launch casino">
+              </div>
+            </div>
+          </a> -->
+
+                    <!-- Andar Bhar -->
+                    <a (click)="goToAndarBhar()">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons" style="width: 400px">
+                            <img src="https://s3.ap-southeast-1.amazonaws.com/cdnuniverse1.site/universe_casino.jpeg" width="400" style="width:400px !important" class="img-fluid">
+                            <div class="casinoicons-title"> Universe Casino </div>
+                            <!-- <div class="new-launch casino">
+                                <img src="assets/gameicons/new-launch-btn.png" alt="">
+                            </div> -->
+                        </div>
+                    </a>
+
+                    <!-- Live Teen Patti -->
+                    <!-- <a (click)="goToTeenPatti2020()">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+                            <img src="assets/gameicons/main/teenpatti.jpg" class="img-fluid">
+                            <div class="casinoicons-title"> 20-20 Teen Patti </div>
+                        </div>
+                    </a>
+                    <a (click)="goToOneDayTeenPatti()">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+                            <img src="assets/gameicons/main/teenpatti.jpg" class="img-fluid">
+                            <div class="casinoicons-title"> 1Day Teen Patti </div>
+                        </div>
+                    </a>
+                    <a (click)="goToTestTeenPatti()">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+                            <img src="assets/gameicons/main/teenpatti.jpg" class="img-fluid">
+                            <div class="casinoicons-title"> Test Teen Patti </div>
+                        </div>
+                    </a> -->
+
+                    <!-- Lucky 7 -->
+                    <!-- <a (click)="goToLucky7()">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+                            <img src="assets/gameicons/main/lucky7.jpg" class="img-fluid">
+                            <div class="casinoicons-title"> Lucky 7 </div>
+                        </div>
+                    </a> -->
+
+                    <!-- Live Poker -->
+                    <!-- <a (click)="goTo2020Poker()">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+                            <img src="assets/gameicons/main/poker.jpg" class="img-fluid">
+                            <div class="casinoicons-title"> 20-20 Poker </div>
+                        </div>
+                    </a>
+                    <a (click)="goToOneDayPoker()">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+                            <img src="assets/gameicons/main/poker.jpg" class="img-fluid">
+                            <div class="casinoicons-title"> 1 Day Poker </div>
+                        </div>
+                    </a>
+                    <a (click)="goToCasinoGame('-1012')">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+                            <img src="assets/gameicons/main/32cardsA.jpg" class="img-fluid">
+                            <div class="casinoicons-title"> 32 Cards A </div>
+                        </div>
+                    </a>
+                    <a (click)="goToCasinoGame('-1010')">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+                            <img src="assets/gameicons/main/32cardsB.jpg" class="img-fluid">
+                            <div class="casinoicons-title"> 32 Cards B </div>
+                        </div>
+                    </a>
+                    <a (click)="goToCasinoGame('-1014')">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+                            <img src="assets/gameicons/main/dt.jpg" class="img-fluid">
+                            <div class="casinoicons-title"> 1 Day Dragon Tiger </div>
+                        </div>
+                    </a>
+                    <a (click)="goToCasinoGame('-1011')">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+                            <img src="assets/gameicons/main/dt.jpg" class="img-fluid">
+                            <div class="casinoicons-title"> 20-20 Dragon Tiger </div>
+                        </div>
+                    </a>
+                    <a (click)="goToCasinoGame('-1013')">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+                            <img src="assets/gameicons/main/worli.jpg" class="img-fluid">
+                            <div class="casinoicons-title"> Instant Worli </div>
+                        </div>
+                    </a>
+                    <a (click)="goToCasinoGame('-1015')">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+                            <img src="assets/gameicons/main/bollywood-casino.jpg" class="img-fluid">
+                            <div class="casinoicons-title"> Bollywood Casino </div>
+                        </div>
+                    </a>
+                    <a (click)="goToCasinoGame('-1016')">
+                        <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+                            <img src="assets/gameicons/main/aaa.jpg" class="img-fluid">
+                            <div class="casinoicons-title"> Amar Akabar Anthony </div>
+                        </div>
+                    </a>
+                    <a (click)="goToCasinoGame('-1017')">
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/main/cmeter.jpg" class="img-fluid">
+              <div class="casinoicons-title">  Casino Meter </div>
+            </div>
+          </a> -->
+
+
+                    <!-- <a (click)="gotoTeenPattiLive()">
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/-1003.png" class="img-fluid">
+              <div class="casinoicons-title"> Teen Patti One Day Live </div>
+            </div>
+          </a>
+
+          <a (click)="gotoUpLive()">
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/-156.png" class="img-fluid">
+              <div class="casinoicons-title"> 7Up-7Down Live </div>
+            </div>
+          </a>
+          <a (click)="gotoAndarLive()">
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/-157.png" class="img-fluid">
+              <div class="casinoicons-title"> Andar Bahar Live </div>
+            </div>
+          </a>
+          <a (click)="gotoCasinoLive()">
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/-158.png" class="img-fluid">
+              <div class="casinoicons-title"> 32 Cards Casino Live </div>
+            </div>
+          </a> -->
+                    <!-- <a (click)="gotoTeenPattiVirtual()">
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/-1003.png" class="img-fluid">
+              <div class="casinoicons-title"> Teen Patti One Day Virtual </div>
+            </div>
+          </a>
+          <a (click)="gotoUpVirtal()">
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/-156.png" class="img-fluid">
+              <div class="casinoicons-title"> 7Up-7Down Virtual </div>
+            </div>
+          </a>
+          <a (click)="gotoTeenPattiTwintyVirtual()">
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/-1002.png" class="img-fluid">
+              <div class="casinoicons-title"> Teen Patti T20 Virtual</div>
+            </div>
+          </a>
+          <a (click)="gotoAndarVirtal()">
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/-157.png" class="img-fluid">
+              <div class="casinoicons-title"> Andar Bahar Virtual </div>
+            </div>
+          </a>
+          <a (click)="gotoCasinoVirtal()">
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/-158.png" class="img-fluid">
+              <div class="casinoicons-title"> 32 Cards Casino Virtual </div>
+            </div>
+          </a> -->
+                    <!-- NewLaunch -->
+                    <!-- <a>
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/20-20poker.png" class="img-fluid">
+              <div class="casinoicons-title"> 20-20 Poker </div>
+            </div>
+          </a> -->
+                    <!-- <a>
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/20-20_dragon_tigar.png" class="img-fluid">
+              <div class="casinoicons-title"> 20-20 Dragon Tigar </div>
+            </div>
+          </a>
+          <a>
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/6players.png" class="img-fluid">
+              <div class="casinoicons-title"> 6 Players </div>
+            </div>
+          </a>
+          <a>
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/3cards_judgment.png" class="img-fluid">
+              <div class="casinoicons-title"> 3 Cards Judgment </div>
+            </div>
+          </a> -->
+
+                    <!-- <a>
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/1day_poker.png" class="img-fluid">
+              <div class="casinoicons-title"> 1 Day Poker </div>
+            </div>
+          </a> -->
+                    <!-- <a>
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/32card-A.png" class="img-fluid">
+              <div class="casinoicons-title"> 32 card-A </div>
+            </div>
+          </a>
+          <a>
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/32card-b.png" class="img-fluid">
+              <div class="casinoicons-title"> 32 card-B </div>
+            </div>
+          </a>
+          <a>
+            <div class="d-inline-block casino-group-1 m-t-10 m-b-10 casinoicons">
+              <img src="assets/gameicons/amer_akabar_anthony.png" class="img-fluid">
+              <div class="casinoicons-title"> Amer Akabar Anthony </div>
+            </div>
+          </a> -->
+                </ng-container>
+            </div>
+        </div>
+
+    </div>
+
+</div>

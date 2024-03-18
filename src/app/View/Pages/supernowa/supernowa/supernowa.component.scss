@@ -1,0 +1,52 @@
+iframe {
+  width: 1px;
+  min-width: 100%;
+  border: none;
+  display: block;
+  max-height: 910px;
+  height: 910px !important;
+}
+
+@media screen and (max-width: 1920px) {
+  iframe {
+    width: 1px;
+    min-width: 100%;
+    border: none;
+    display: block;
+    max-height:765px;
+    height: 765px !important;
+  }
+}
+
+@media screen and (max-width: 1680px) {
+  iframe {
+    width: 1px;
+    min-width: 100%;
+    border: none;
+    display: block;
+    max-height:620px;
+    height: 620px !important;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  iframe {
+    width: 1px;
+    min-width: 100%;
+    border: none;
+    display: block;
+    max-height:500px;
+    height: 500px !important;
+  }
+}
+
+@media screen and (max-width: 1320px) {
+  iframe {
+    width: 1px;
+    min-width: 100%;
+    border: none;
+    display: block;
+    max-height:495px;
+    height:495px !important;
+  }
+}

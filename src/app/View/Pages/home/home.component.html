@@ -1,0 +1,147 @@
+<div class="right_atspartMid ng-scope">
+    <div class="padding">
+        <div class="col-md-12 inplay">
+            <!-- <div class="marque_headpart">
+                <marquee>{{this.matchModel.marqueText}} </marquee>
+            </div> -->
+            <div class="sport_blk newdesign">
+                <div>
+
+                    <!-- Banner content -->
+                <div class="banner-content">
+                    <!-- Your banner HTML content goes here -->
+                    <img src="/assets/images/Banner_Desktop_View.jpg" alt="Banner Image" />
+                </div>
+
+                    <h1 class="binding">{{SportName}}<span class="starts-in-label ng-binding ng-scope"
+                            *ngIf="false">Betting from 30mins before start</span>
+                    </h1>
+
+
+                    <div class="bet_table ads_vjtab  table-bordered">
+                        <div class="">
+                            <table class="table ">
+
+                                <tr class="blank_blk hidden-xs top_xtow">
+                                    <td class="mttd1"></td>
+                                    <td class="mttd2">&nbsp;</td>
+
+
+                                    <td class="mttd3">
+                                        <div class="betright">
+                                            <div class="betbox">1</div>
+                                            <div class="betbox">x</div>
+                                            <div class="betbox">2</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr *ngFor="let match of GetMatchData |orderBy:'match_date';trackBy:trackByFn">
+                                    <td class="mttd1 ">
+                                        <!-- <a href="javascript:void(0)">
+                                            <i *ngIf="match.is_favourite=='N'" class="fa fa-star-o" aria-hidden="true"
+                                                (click)="setfavourite(match.market_id)"></i>
+                                            <i *ngIf="match.is_favourite=='Y'" (click)="setUnfavourite(match.market_id)"
+                                                class="fa fa-star" aria-hidden="true"></i>
+                                        </a>
+                                        <img src="assets/loginimages/greendot.png" alt="img"> -->
+                                        <a (click)="gotoUserMatchOddsPage(match)">{{match.name}}</a>
+                                        <div class="commainbtv"><span *ngIf="match.day>1" class="commonbtn"
+                                                (click)="gotoUserMatchOddsPage(match)">{{match.day}} Day </span></div>
+                                    </td>
+
+                                    <td class="mttd2" [ngClass]="{'betting-disableds':(match.is_visible=='0' )}">
+
+                                        <span *ngIf="match.inplay"><i *ngIf="match.inplay " class="fa fa-television"
+                                                ></i>{{match.match_date | date : 'dd MMM, HH:mm'}}
+                                            <a class="fancyBtn" *ngIf="match.is_fancy==1"
+                                                (click)="gotoUserMatchOddsPage(match)">
+                                                <span class="commonbtn">F</span></a></span>
+
+                                        <span *ngIf="!match.inplay ">{{match.match_date | date : 'dd MMM, HH:mm'}}
+                                            <a class="fancyBtn" *ngIf="match.is_fancy==1"
+                                                (click)="gotoUserMatchOddsPage(match)">
+                                                <span class="commonbtn">F</span></a> </span>
+
+
+                                    </td>
+
+
+                                    <td class="mttd3" [ngClass]="{'betting-disableds':(match.is_visible=='0' )}">
+                                        <div class="betright" *ngIf="match.runner_json != null">
+
+                                            <div class="betbox"><a
+                                                    (click)="CallBackLay((match.runner_json[0].back[0].price),1,match.name,match.runner_json[0].selectionId,match.marketid,i,match)"
+                                                    class="td_btn blue_btn"
+                                                    [ngClass]="{'callYlCss':match.runner_json[0] == undefined?'':match.runner_json[0].back[0].selected }">{{match.runner_json[0]
+                                                    == undefined ? 0 : match.runner_json[0].back[0].price}}
+                                                </a>
+                                                <a (click)="CallBackLay((match.runner_json[0].lay[0].price),0,match.name,match.runner_json[0].selectionId,match.marketid,i,match)"
+                                                    class="td_btn pink_btn" href="javascript:void(0)"
+                                                    [ngClass]="{'callCYanCss':match.runner_json[0] == undefined?'':match.runner_json[0].lay[0].selected }">{{match.runner_json[0]
+                                                    == undefined ? 0 : match.runner_json[0].lay[0].price }}
+                                                </a>
+                                            </div>
+
+
+                                            <div class="betbox" class="betbox"><a
+                                                    (click)="CallBackLay((match.runner_json[2].back[0].price),1,match.name,match.runner_json[2].selectionId,match.marketid,i,match)"
+                                                    class="td_btn blue_btn" data-toggle="collapse"
+                                                    data-target="#demo{{$index}}" (click)="match.IsShow=true"
+                                                    href="javascript:void(0)"
+                                                    [ngClass]="{'callYlCss':match.runner_json[2] == undefined?'':match.runner_json[2].back[0].selected }">{{match.runner_json[2]
+                                                    == undefined ? '--' : match.runner_json[2].back[0].price}}
+                                                </a>
+                                                <a ng-init="SetCommonProperty(match.runner_json[2].id,match)"
+                                                    (click)="CallBackLay((match.runner_json[2].lay[0].price),0,match.name,match.runner_json[2].selectionId,match.marketid,i,match)"
+                                                    class="td_btn pink_btn" data-toggle="collapse"
+                                                    data-target="#demo{{$index}}" href="javascript:void(0)"
+                                                    [ngClass]="{'callCYanCss':match.runner_json[2] == undefined?'':match.runner_json[2].lay[0].selected }">{{match.runner_json[2]
+                                                    == undefined ? '--' : match.runner_json[2].lay[0].price}}
+                                                </a>
+                                            </div>
+
+
+                                            <div class="betbox"><a
+                                                    (click)="CallBackLay((match.runner_json[1].back[0].price),1,match.name,match.runner_json[1].selectionId,match.marketid,i,match)"
+                                                    class="td_btn blue_btn" (click)="match.IsShow=true"
+                                                    href="javascript:void(0)"
+                                                    [ngClass]="{'callYlCss':match.runner_json[1] == undefined?'':match.runner_json[1].back[0].selected }">{{match.runner_json[1].back[0].price
+                                                    == undefined ? 0 : match.runner_json[1].back[0].price}}
+                                                </a>
+                                                <a (click)="CallBackLay((match.runner_json[1].lay[0].price),0,match.name,match.runner_json[1].selectionId,match.marketid,i,match)"
+                                                    class="td_btn pink_btn" href="javascript:void(0)"
+                                                    [ngClass]="{'callCYanCss':match.runner_json[1] == undefined?'':match.runner_json[1].lay[0].selected }">{{match.runner_json[1].lay[0].price
+                                                    == undefined ? 0 : match.runner_json[1].lay[0].price}}</a>
+                                            </div>
+                                            <span *ngIf="match.status=='SUSPENDED' || match.status=='CLOSED'"
+                                                [ngClass]="{'mat-stat':(match.inplay && match.status=='OPEN'),'css-suspend1':(match.status=='SUSPENDED' || match.status=='CLOSED')}">
+                                                <i *ngIf="match.inplay && match.status=='OPEN'"
+                                                    class="fa fa-play-circle" style="color: green;"></i>
+                                                <p class="suspendecp">
+                                                    {{match.status == 'OPEN' ? match.inplay ? "In-Play" : "" :
+                                                    match.status}}
+                                                </p>
+                                            </span>
+                                        </div>
+
+
+                                    </td>
+
+
+                                </tr>
+                                <tr *ngIf="GetMatchDatalength == 0">
+                                    <td colspan="7" class="NorecordF">No Record Found.</td>
+                                </tr>
+
+
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,52 @@
+.main-sidebar, .left-side {
+position: absolute;
+top: 0;
+left: 0;
+padding-top: 0;
+min-height: 100%;
+               width: 230px;
+z-index: 810;
+}
+#menu2 ul li {
+  clear: both;
+  padding:  0;
+  background: #fff;
+  border-bottom: unset;
+
+}
+#menu2 a {
+  display: block;
+  position: relative;
+  border-bottom: 1px solid #d2d6e2;
+  color: #223869;
+  padding: 0.3rem 1rem;
+  font-size: 13px;
+}
+
+#menu2 a:hover:before {
+  content: ""; /* Ensure content property is set for pseudo-elements */
+  background-image: url('https://aura444.com/sprite-icon.38e629d70915dd18762b.png');
+  background-position: 100% -1025px;
+  height: 25px;
+  width: 23px;
+  background-repeat: no-repeat;
+  line-height: 25px;
+  display: inline-block; /* Add display property */
+  float: right;
+  border-bottom: 1px solid #d2d6e2;
+}
+
+#menu2 a:before {
+  content: "";
+  background-image: url(https://aura444.com/sprite-icon.38e629d70915dd18762b.png);
+  background-position: 100% -1000px;
+  height: 25px;
+  width: 23px;
+  background-repeat: no-repeat;
+  line-height: 25px;
+  top: 6px;
+  right: 6px;
+  display: inline-block;
+  float: right;
+  border-bottom: 1px solid #d2d6e2;
+}

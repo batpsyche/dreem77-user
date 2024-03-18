@@ -1,0 +1,107 @@
+
+<div class="right_atspart">
+  <h1 class="binding">Transfer Statement  </h1>
+
+  <form name="Master">
+    <div class="row">
+      <div class=" row col-lg-12 col-md-12 col-sm-12 ">
+
+
+        <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12 padding">
+          <label>From Date </label>
+          <input type="text"
+                 class="form-control"
+                 #dp="bsDatepicker"
+                 [(ngModel)]="fromDateValue"
+                 bsDatepicker [ngModelOptions]="{standalone: true}">
+
+        </div>
+        <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12 padding">
+          <label>To Date </label>
+          <input type="text"
+                 class="form-control"
+                 [ngModelOptions]="{standalone: true}"
+                 #dp="bsDatepicker"
+                 [(ngModel)]="toDateValue"
+                 bsDatepicker>
+
+        </div>
+
+
+
+        <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12 padding btn_out_margin btn_color_out">
+          <label class="forblan_label">&nbsp;</label>
+          <button type="button" class="btn btn-primary" (click)="gettransferStatement(1);">Search</button>
+          <button type="button" class="btn btn-primary" (click)="ResetAll();">Reset</button>
+
+        </div>
+
+        <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12 padding btn_out_margin btn_color_out"
+             *ngIf="showHistory">
+          <button type="button" class="btn btn-primary" (click)="back();">Back</button>
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </form>
+
+
+  <div class="row">
+    <!-- end of Tab -->
+    <div class="col-lg-12 col-md-12 col-sm-12 ">
+      <div class="lst_master_top clearfix">
+        <div class="clearfix top_table_form member_listing">
+
+          <div class="usertable_area onepagehitdiv  table-responsive login_table" *ngIf="transferStatement != null">
+
+            <table class="table onepagehit table-condensed table-striped  my-market">
+              <thead>
+              <tr class="">
+                <th>S No.</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Amount	</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let GetchipData of transferStatement | paginate:config;index as i">
+                <td>{{i+1}}</td>
+                <td >{{(GetchipData.created_at*1000) |date:'medium'}}</td>
+                <td >{{GetchipData.description}}</td>
+                <td [ngClass]="{'green':GetchipData.amount>0,'red':GetchipData.amount<0}">{{GetchipData.amount}}</td>
+
+
+              </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+        </div>
+        <div class="row" *ngIf="transferStatement != null">
+          <div class="col-sm-12">
+
+            <ng-container *ngIf="config.totalItems>10">
+              <pagination-controls  (pageChange)="pageChange($event)"
+                                    class="my-pagination"></pagination-controls>
+            </ng-container>
+
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-12" *ngIf="transferStatement == ''">
+            <span class="notfound">No Records Found</span>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+

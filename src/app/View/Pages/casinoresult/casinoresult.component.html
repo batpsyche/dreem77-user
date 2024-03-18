@@ -1,0 +1,191 @@
+<div class="right_atspart">
+    <h1 class="binding">Casino Result Report </h1>
+
+    <form name="Master">
+        <div class="row">
+            <div class=" row col-lg-12 col-md-12 col-sm-12 ">
+
+
+                <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12 padding">
+                    <input type="text"
+                           class="form-control"
+                           [ngModelOptions]="{standalone: true}"
+                           #dp="bsDatepicker"
+                           [(ngModel)]="fromDateValue"
+                           bsDatepicker [(bsValue)]="fromDateValue">
+
+                </div>
+
+                <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12 padding">
+                    <select [(ngModel)]="P_LFilter" [ngModelOptions]="{standalone: true}" class="form-control inputCrl">
+                        <option value="FC" *ngFor="let xdata of sportsValues" [value]="xdata.match_id">{{xdata.name}}</option>
+
+                    </select>
+                </div>
+                <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12 padding">
+                    <input type="text"
+                           class="form-control" placeholder="Round ID "
+                           [ngModelOptions]="{standalone: true}"
+                           [(ngModel)]="Round_id"
+                          >
+
+                </div>
+
+                <div class="form-group  col-lg-4 col-md-4 col-sm-12 col-xs-12 padding btn_out_margin btn_color_out">
+                    <button type="button" class="btn btn-primary" (click)="getcasinoReports(1);">Submit</button>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </form>
+
+
+    <div class="row">
+        <!-- end of Tab -->
+        <div class="col-lg-12 col-md-12 col-sm-12 ">
+            <div class="lst_master_top clearfix">
+                <div class="usertable_area clearfix top_table_form member_listing">
+
+                    <div class="onepagehitdiv  table-responsive login_table" *ngIf="casinoReportData != null">
+
+                        <table class="table onepagehit table-condensed table-striped  my-market">
+                            <thead>
+                            <tr class="">
+                                <th>Round ID</th>
+                                <th>Winner</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let GetchipData of casinoReportData | paginate: config;trackBy: trackByFn;let i=index;">
+                                <td><a class="result-details" (click)="openResultPopup(GetchipData);">{{GetchipData.market_id}}</a></td>
+                                <td>{{GetchipData.winner_name}}</td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+                </div>
+
+                <div class="row" *ngIf="casinoReportData != null">
+                    <div class="col-sm-12">
+
+                        <ng-container *ngIf="config.totalItems>10">
+                            <pagination-controls (pageChange)="pageChange($event)"
+                                                 class="my-pagination"></pagination-controls>
+                        </ng-container>
+
+                    </div>
+
+                </div>
+                <div class="row" *ngIf="casinoReportData == null">
+                    <div class="col-sm-12">
+                        <p>No data available in table
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div id="modalpokerresult" class="modal  ">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title"> Live Teenpatti Result</h4>
+                <button type="button" class="close" (click)="closePopupResult()">×</button>
+            </div>
+
+            <div class="modal-body nopading" id="result-details" style="min-height: 300px">
+                <div class="container-fluid" *ngIf=" card_dataArray != undefined">
+                    <div class="row m-t-10">
+                        <div class="col-md-12">
+                            <span class="float-right round-id"><b>Round ID:</b> {{card_dataArray.market_id}}</span>
+                        </div>
+                    </div>
+
+                    <div class="row player-container m-t-10">
+                        <div id="game-cards" *ngIf="card_dataArray.match_id != -145">
+                            <div class="card-inner" *ngFor="let x of card_data">
+                                <h3 class="">{{x.name}}</h3>
+                                <div><img src="assets/CARDS/{{card}}.png" *ngFor="let card of x.cards"></div>
+                                <div class="col-md-12 text-center" *ngIf="x.winner == 1">
+                                    <label class="winner-label bg-success m-t-20">Winner</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="game-cards " *ngIf="card_dataArray.match_id == -145">
+                            <div class="card-inner" *ngFor="let x of card_data">
+                                <div style="text-align: center"><img src="assets/CARDS/{{x.cards}}.png" ></div>
+                                <div class="col-md-12 text-center" >
+                                    <label class="winner-label bg-success m-t-20">RESULT: </label> <span >{{x.winner}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modalandarbaharresult" class="modal  ">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title"> Andar Bahar Result</h4>
+                <button type="button" class="close" (click)="closePopupAndarResult()">×</button>
+            </div>
+
+            <div class="modal-body nopading" id="result-details" style="min-height: 300px">
+                <div class="container-fluid" *ngIf=" card_dataArray1 != undefined">
+                    <div class="row m-t-10">
+                        <div class="col-md-12">
+                            <span class="float-right round-id"><b>Round ID:</b> {{card_dataArray1.market_id}}</span>
+                        </div>
+                    </div>
+
+                    <div class="row player-container m-t-10">
+                        <div id="game-cards">
+                            <h3 class="text-center">Andar</h3>
+
+                            <div class="card-inner3" >
+
+                                <div class="card-scroll" >
+                                    <div class="item" *ngFor="let card of aall"><img src="assets/CARDS/{{card}}.png" ></div>
+                                </div>
+                            </div>
+                            <div class="card-inner3" >
+                                <h3 class="text-center">Bahar</h3>
+
+                                <div class="card-scroll" >
+
+                                    <div class="item "  *ngFor="let card1 of ball"><img src="assets/CARDS/{{card1}}.png"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

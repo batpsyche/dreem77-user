@@ -1,0 +1,462 @@
+<div class="rightsidebar account_section">
+  <div>
+    <div class="account_overview mobilebox right_account" id="secondToolbar" [ngClass]="{ 'sticky' : isSticky}">
+      <div class="livetv_heading " (click)="showLiveTv= showLiveTv == 'showlivetv' ? '' :  'showlivetv';getTVURL();">Live TV<i
+          class="fa fa-angle-down" style="float: right;
+    font-size: 20px; margin-top:6px;"></i>
+      </div>
+
+      <div id="livetv" [hidden]="showLiveTv != 'showlivetv'">
+
+        <ng-container *ngIf="!live_sport_tv_url">
+          <div>
+            <input type="radio" name="TV" (click)="ChangeFrame(1)" />TV1
+            <input type="radio" name="TV" (click)="ChangeFrame(2)" />TV2
+            <input type="radio" name="TV" (click)="ChangeFrame(3)" />TV3
+            <input type="radio" name="TV" (click)="ChangeFrame(4)" />TV4
+            <a style="cursor:pointer;color:red;font-size:20px;" (click)="ChangeFrame(0)">X</a>
+          </div>
+          <div id="dvPlayer" class="video" *ngIf="tvUrlCricket != null">
+            <iframe [src]="tvUrlCricket" id="video-canvas"></iframe>
+          </div>
+        </ng-container>
+
+
+        <ng-container *ngIf="live_sport_tv_url">
+          <div id="dvPlayer" class="video">
+            <iframe [src]="live_sport_tv_url" id="video-canvas"></iframe>
+          </div>
+        </ng-container>
+      </div>
+
+      <ng-container *ngIf="show360Board">
+        <div class="livetv_heading " (click)="show360Score= show360Score == 'show360Score' ? '' :  'show360Score'">360
+          Score<i class="fa fa-angle-down" style="float: right;
+    font-size: 20px; margin-top:6px;"></i>
+        </div>
+        <div id="360score" [hidden]="show360Score != 'show360Score'">
+          <div id="dvPlayer" class="video">
+            <iframe [src]="Scorekeyurl" id="video-canvas"></iframe>
+          </div>
+
+
+        </div>
+      </ng-container>
+      <div class="dropdown" *ngIf="balanceData != undefined">
+        <button class="credit" type="button"
+          (click)="showBalanceData = showBalanceData == 'showChildren' ? '' :  'showChildren'">Available Credit:
+          <span class="caret">{{balanceData.balance}} </span> <i class="fa fa-angle-down"></i></button>
+        <ul class="avail_userlistblanc" *ngIf="showBalanceData == 'showChildren'">
+          <li>Credit Limit: <span
+              [ngClass]="{'red':balanceData.freechips<0,'green':balanceData.freechips>0}">{{balanceData.freechips}}</span>
+          </li>
+          <li>Winning Amount: <span
+              [ngClass]="{'red':balanceData.profit_loss<0,'green':balanceData.profit_loss>0}">{{balanceData.profit_loss}}</span>
+          </li>
+          <li>Total Net Exposure: <span
+              [ngClass]="{'red':balanceData.liability<0,'green':balanceData.liability>0}">{{balanceData.liability}}</span>
+          </li>
+
+        </ul>
+      </div>
+
+
+      <div class="showpoupbox">
+
+        <!--<div class="mobileview banking"><a onclick="myfunNew()" id="showonclick"> <span
+          class="betshowbtn">Betslip</span> <span class="closebtn">Close</span> </a></div> -->
+
+        <div class="mobilebox1">
+          <div class="switch_box">
+            <div class="leftlablad">
+              <label class="switch">
+                <input type="checkbox" class="switch-input" [(ngModel)]="IsToggle"
+                  (click)="getStakesett(!IsToggle,OneClickStackButton)" id="formButton1">
+                <span class="switch-label" data-on="On" data-off="Off"></span>
+                <span class="switch-handle"></span>
+              </label>
+
+              <small class='clickbet' *ngIf="!IsToggle"> 1 Click Betting </small>
+            </div>
+            <div class="rightform-ecs">
+              <form name="form1" class="maineds_odform">
+                <div class="iner_form">
+                  <ul *ngIf="IsToggle">
+                    <li *ngFor="let stack of OneClickStackButton;let i =index;trackBy:trackByFn" class="form_text"
+                      [hidden]="!isEdit">
+                      <input type="number" min="0" class="form-control" name="b{{i}}" placeholder=""
+                        [(ngModel)]="OneClickStackButton[i]" required>
+                    </li>
+
+                    <li *ngFor="let stack1 of OneClickStackButton;let index =index;" class="form_text"
+                      [hidden]="isEdit">
+                      <button type="button" [ngClass]="{btn_active:index==btnActive}"
+                        (click)="setOneClickBetStake(stack1,index)" class="btn btn_default">
+                        {{OneClickStackButton[index]}}
+                      </button>
+                    </li>
+
+                    <li class="form_text" *ngIf="!isEdit" (click)="isEdit= true">
+                      <div class="form_button"><a href="javascript:void(0)">Edit</a></div>
+                    </li>
+                    <li class="form_text" *ngIf="isEdit">
+
+                      <div class="form_button"><a (click)="isEdit=false;CallOnclickSetting()"
+                          href="javascript:void(0)">Cancel</a>
+                      </div>
+                    </li>
+                    <li class="form_text" *ngIf="isEdit">
+                      <div class="form_button"><button class="savebtn"
+                          (click)="isEdit=false;SaveOneClick(OneClickStackButton);"
+                          [disabled]="isValidbuttoneclick(OneClickStackButton)">Save</button></div>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+          <div class="betsilip_sec">
+            <h5>Betslip </h5>
+            <div id="exTab1">
+              <ul class="nav nav-pills betsdlip_openbts">
+                <li (click)="betslipinfo=true;betslip=1;IsShowBetInfo=false;this.matchModel.isbetslipshow=true;">
+
+                  <a [ngClass]="{'activebetslip':this.matchModel.isbetslipshow == true }">Betslip</a>
+                </li>
+                <li (click)="betslipinfo=false;betslip=2;IsShowBetInfo=true;this.matchModel.isbetslipshow=false">
+                  <a [ngClass]="{'activebetslip':this.matchModel.isbetslipshow == false}">Open
+                    Bets</a>
+                </li>
+                <li class="edit_stakes">
+                  <span class="form_button">
+                    <a title="Edit Stakes" (click)="getUserMatchStack();showEditPopup()">Edit Stakes</a>
+                  </span>
+
+                </li>
+              </ul>
+
+
+              <div class="tab_bg clearfix betslipnew">
+                <div class="showallbets" *ngIf="IsShowBetInfo == true"> <input checked="checked"
+                    (change)="showBetInform()" name="checkbox-group" [ngModel]="IsShowBetInform" id="test1"
+                    type="checkbox">
+                  <label for="test1">Show bet Info </label>
+                </div>
+                <div class="smg_texfill" *ngFor="let back of this.matchModel.tempArray;let index=index"
+                  [hidden]="this.matchModel.isbetslipshow == false">
+                  <span class="error" *ngIf="back.IsErrorShow">{{back.Message}}</span>
+                  <span class="success" *ngIf="!back.IsErrorShow">{{back.Message}}</span>
+                  <div class="sigma_olomouc">
+                    <div class="betload-box " *ngIf="(loading || this.matchModel.loading1)">
+                      <img id="mySpinner" src="assets/loginimages/loading1.gif">
+                    </div>
+                    <label *ngIf="back.is_back==1">Back</label>
+                    <label *ngIf="back.is_back==0" class="before_lay">Lay</label>
+                    <a href="javascript:void(0)">{{back.MatchName}}</a>
+                  </div>
+                  <div class="bet_back" [ngClass]="{'bet_lay':back.is_back==0}">
+                    <span class="selection_name">{{back.placeName}} </span>
+                    <div class="bet_fields clearfix">
+
+                      <ul class="odds_tex">
+                        <li>
+                          <div class="form-group">
+
+                            <label *ngIf="back.is_session_fancy=='N'">Odds</label>
+                            <label *ngIf="back.is_session_fancy!='N'">{{back.is_back==0 ? 'No':'Yes'}}</label>
+                            <span *ngIf="(back.match_Id != -3 && back.match_Id != -7)">
+                              <input type="number" *ngIf="back.isManual=='0'" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+                                min="0" step="0.01" [(ngModel)]="back.odds" class="form-control numclass">
+                              <input type="number" *ngIf="back.isManual =='1'" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+                                min="0" step="0.01" [(ngModel)]="back.pricefinal" class="form-control numclass">
+                            </span>
+                            <!-- <span class="error" ng-show="back.isMaxOdds">Max odds is {{config_max_odd_limit}}.</span> -->
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-group">
+                            <label>Stake</label>
+                            <input type="number" min="0" id="stackVal" (focus)="setbtn(index)"
+                              (input)="calculateP_lOnStackOnInput(back.stake,back.stake,back.is_back,back);"
+                              class="form-control numclass" placeholder="0" [(ngModel)]="back.stake">
+                          </div>
+                        </li>
+                        <li>
+                          <div class="form-group" *ngIf="back.is_session_fancy=='N'">
+                            <label *ngIf="(back.is_back==1) ">Profit</label>
+                            <label *ngIf="(back.is_back==0)">Liability</label>
+
+                            <input type="hidden" [ngModel]="back.p_l">
+
+
+                            <span
+                              *ngIf="back.isManual == '0' && (back.match_Id != -3 && back.match_Id != -7)">{{((back.odds*back.stake)-back.stake).toFixed(2)=='NaN'?0:
+                              ((back.odds*back.stake)-back.stake).toFixed(2)}}</span>
+                            <span *ngIf="back.isManual == '1'">{{((back.pricefinal+1)*back.stake)-back.stake | number:
+                              '1.2-2'}}</span>
+
+
+                          </div>
+                        </li>
+                        <i (click)="RemoveBackLay( back)" class="fa fa-window-close"></i>
+                      </ul>
+
+                      <div class="first_row" *ngIf="setRef == index || this.matchModel.tempArray.length == 1 ">
+                        <ul>
+                          <li *ngFor="let betbutton of MatchStackButton ;index as i  ">
+                            <button type="button"
+                              (click)="calculateP_lOnStack(((back.odds*back.stake)-back.stake),betbutton,back.is_back,back);"
+                              *ngIf="i <5" class="btn num-btns">{{betbutton}}
+                            </button>
+                          </li>
+                          <li>
+                            <button type="button" (click)="back.stake=0;back.p_l=0;"> Clear
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="" [hidden]="this.matchModel.isbetslipshow == true ">
+                  <div class="fancy-collapse-panel">
+                    <div class="panel panel-default match">
+                      <div class="panel-heading" role="tab" id="headingOne">
+                        <a class="ptboxcolrd"
+                          (click)="showSessionBets = showSessionBets == 'showSessionBets' ? '' :  'showSessionBets'">Unmatched
+                          Bets ({{(unmatchedBetslength)}})<i class="fa fa-angle-down"></i></a>
+
+                      </div>
+                      <div class="panel-body unmatchedScrollTable" *ngIf="showSessionBets">
+                        <div class="sessionbet_vj">
+                          <table class="table table-bordered betslip-table" [hidden]="IsShowBetInform == false">
+                            <thead>
+                              <tr *ngIf="unmatchedBetslength>0">
+                                <th>S.No.</th>
+                                <th>Runner</th>
+                                <th>Odds</th>
+                                <th>stack</th>
+                                <th>P&l</th>
+
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let unMatchedData of unmatchedBets; index as i"
+                                [ngClass]="{'lay-head': unMatchedData.is_back == 0 , 'back-head': unMatchedData.is_back == 1}">
+                                <td>{{i+1}}<span class="fa fa-trash"
+                                    (click)="deleteUser(unMatchedData.MstCode,unMatchedData.UserId)"></span><span
+                                    class="red ng-scope" *ngIf="unMatchedData.delete_status == 2"><br> -&gt; Void</span>
+                                </td>
+
+                                <td>{{unMatchedData.selection_name}}<br>
+                                  {{unMatchedData.created_at *1000|date:'medium'}}
+                                </td>
+                                <td>{{unMatchedData.odds | number : '1.2'}}</td>
+                                <td>{{unMatchedData.stack }}</td>
+                                <td>{{unMatchedData.p_l }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="fancy-collapse-panel">
+                    <div class="panel panel-default match">
+                      <div class="panel-heading" role="tab">
+                        <a class="ptboxcolrd"
+                          (click)="showMatchedBets = showMatchedBets == 'showMatchedBets' ? '' :  'showMatchedBets'">Matched
+                          Bets ({{(matchedBetslength)}}) <i class="fa fa-angle-down"></i></a>
+
+                      </div>
+                      <div class="panel-body unmatchedScrollTable" *ngIf="showMatchedBets">
+                        <div class="sessionbet_vj">
+                          <table class="table table-bordered betslip-table" [hidden]="IsShowBetInform == false">
+                            <thead>
+                              <tr *ngIf="matchedBetslength>0">
+                                <th>S.No.</th>
+                                <th>Runner</th>
+                                <th>Odds</th>
+                                <th>stack</th>
+                                <th>P&l</th>
+
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let unMatchedData of matchedBets; index as i"
+                                [ngClass]="{'lay-head': unMatchedData.is_back == 0 , 'back-head': unMatchedData.is_back == 1}">
+                                <td>{{i+1}}<span class="red ng-scope" *ngIf="unMatchedData.delete_status == 2"><br>
+                                    -&gt; Void</span></td>
+                                <td>{{unMatchedData.selection_name}}
+                                  <br>
+                                  {{unMatchedData.created_at *1000|date:'medium'}} <span class="red"
+                                    *ngIf="unMatchedData.void==1"> <br>-> Void</span>
+                                </td>
+                                <td>{{unMatchedData.odds | number : '1.2'}}</td>
+                                <td>{{unMatchedData.stack}}</td>
+                                <td>{{unMatchedData.p_l }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="fancy-collapse-panel">
+                    <div class="panel panel-default match">
+                      <div class="panel-heading" role="tab">
+                        <a class="ptboxcolrd"
+                          (click)="showfancydBets = showfancydBets == 'showfancydBets' ? '' :  'showfancydBets'">Fancy
+                          Bets ({{(fancyBetslength)}}) <i class="fa fa-angle-down"></i></a>
+
+                      </div>
+                      <div class="panel-body unmatchedScrollTable" *ngIf="showfancydBets">
+                        <div class="sessionbet_vj">
+                          <table class="table table-bordered betslip-table" [hidden]="IsShowBetInform == false">
+                            <thead>
+                              <tr *ngIf="matchedBetslength>0">
+                                <th>S.No.</th>
+                                <th>Runner</th>
+                                <th>Run</th>
+                                <th>stack</th>
+                                <th>P&l</th>
+
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let unMatchedData of fancyBets; index as i"
+                                [ngClass]="{'lay-head': unMatchedData.is_back == 0 , 'back-head': unMatchedData.is_back == 1}">
+                                <td>{{i+1}}<span class="red ng-scope" *ngIf="unMatchedData.delete_status == 2"><br>
+                                    -&gt; Void</span></td>
+                                <td>{{unMatchedData.name}} ({{unMatchedData.size}})
+                                  <br>
+                                  {{unMatchedData.created_at *1000|date:'medium'}} <span class="red"
+                                    *ngIf="unMatchedData.void==1"> <br>-> Void</span>
+                                </td>
+                                <td>{{unMatchedData.odds | number : '1.2'}}</td>
+                                <td>{{unMatchedData.stack}}</td>
+                                <td>{{unMatchedData.p_l }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="tab_bg">
+                <p *ngIf="this.matchModel.tempArray.length == 0 && betslipinfo == true" style=" margin: 5px;
+">Click on the odds to add selections to the betslip.
+
+                </p>
+                <div class="liability"
+                  *ngIf="this.matchModel.tempArray.length > 0 && this.matchModel.isbetslipshow == true">
+                  <!--
+                    <span *ngIf="false">Liability: {{total_liability}}</span>
+-->
+                  <div class="remove_all text-right">
+                    <ul>
+                      <li><a href="javascript:void(0)" (click)="this.matchModel.tempArray=[];clearAll()">Remove </a>
+                      </li>
+                      <li><button class="btn-success"
+                          [disabled]="(this.matchModel.tempArray[0].stake <=0 ) ||(!this.matchModel.tempArray[0].stake)"
+                          (click)="Place_Order(this.matchModel.tempArray)">Place bets</button></li>
+                    </ul>
+                  </div>
+
+                  <li><span>
+                      <input type="checkbox" (click)="update_confirmation_setting(ischeckconfirmval)"
+                        [(ngModel)]="ischeckconfirmval" [checked]="ischeckconfirm == 'Y'?true:false" id="test2">
+                      <label for="test2">Confirm bets before placing </label>
+                    </span></li>
+
+
+                </div>
+              </div>
+
+
+
+
+            </div>
+
+
+          </div>
+          <!--
+          <div class="card m-b-10">
+            <div class="card-header">
+              <h6 class="card-title d-inline-block">
+                Rules
+              </h6>
+            </div>
+            <div class="card-body" style="padding: 10px;">
+              <table class="table table-bordered rules-table">
+                <thead>
+                <tr class="text-center">
+                  <th colspan="2">Pair Plus</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Pair (Double)</td>
+                  <td>1 To 1</td>
+                </tr>
+                <tr>
+                  <td>Flush (Color)</td>
+                  <td>1 To 4</td>
+                </tr>
+                <tr>
+                  <td>Straight (Rown)</td>
+                  <td>1 To 6</td>
+                </tr>
+                <tr>
+                  <td>Trio (Teen)</td>
+                  <td>1 To 35</td>
+                </tr>
+                <tr>
+                  <td>Straight Flush (Pakki Rown)</td>
+                  <td>1 To 45</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+-->
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="modal edit_stakes" id="edit_popup">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form name="stakesettForm" novalidate>
+            <div class="row">
+              <div class="col-sm-4" *ngFor="let stakeval of stackValues;let i = index; trackBy:trackByFn">
+                <input type="text" name="a{{i}}" class="form-control" placeholder="" [(ngModel)]="stackValues[i]"
+                  required *ngIf="i<5" autofocus>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="button" class="btn btn-secondary" (click)="cancelPop()">Cancel</button>
+          <button type="button" class="btn btn-success" [disabled]="isValidbutt(stackValues)"
+            (click)="updateUserMatchStack(stackValues);cancelPop()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>

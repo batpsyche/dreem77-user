@@ -1,0 +1,33 @@
+top-bar {
+    background: linear-gradient(-180deg,#184438 0, #14805e 100%);
+    line-height: 30px;
+    margin-top: 70px;
+    position: fixed;
+    z-index: 1018;
+    width: 100%;
+}
+
+.sport-menu {
+    position: relative;
+    margin-left: 25px;
+}
+.sport-menu__item {
+    padding: 0;
+    font-weight: 700;
+}
+
+.sport-menu__item:first-child::before {
+    display: none;
+}
+
+.sport-menu__link {
+    color: #000000;
+    font-size: 13px;
+    padding: 0 10px;
+    display: inline-block;
+    border-right: 1px solid #797777;
+    list-style: none;
+}
+.sport-menu__link--casino {
+    color: #d9534f;
+}

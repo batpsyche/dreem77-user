@@ -1,0 +1,89 @@
+
+
+
+.jdmlimiter.login {
+  background-size: cover;
+}
+.jdmlimiter.login:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: linear-gradient(rgba(239,205,5,0.6),rgba(255,255,255,0.6));
+}
+.header_main {
+  background: linear-gradient(-180deg,#14805e 0, #184438 100%);
+  color: #000;
+}
+.logoinds {
+  color: #000 !important;
+}
+.livetv_heading[_ngcontent-c6] {
+  background: linear-gradient(-180deg, #2E4B5E 0%, #243A48 82%);
+}
+.account_overview[_ngcontent-c6] .credit[_ngcontent-c6] {
+  background: linear-gradient(-180deg, #2E4B5E 0%, #243A48 82%);
+}
+a.ptboxcolrd[_ngcontent-c6] {
+  background: #000 !important;
+}
+.btn-info {
+  color: #fff;
+  background-color: #000 !important;
+  border-color: #333 !important;
+}
+.time_zone{
+  color: #000 !important;
+
+}
+.wrap {
+  background: linear-gradient(-180deg,#14805e 0, #184438 100%);
+}
+.login-btn1 {
+  background-color: #171e89!important;
+  color: #FFF !important;
+}
+/*.mainlogo_left img {
+    width: 92px;
+}*/
+.mainlogo_left {
+  width: 17%;
+  float: left;
+  padding-top: 0;
+}
+.account_overview .credit{
+  background: linear-gradient(-180deg, #2E4B5E 0%, #243A48 82%);
+}
+.livetv_heading {
+  background: linear-gradient(-180deg, #2E4B5E 0%, #243A48 82%);;
+}
+
+.btn_color_out button {
+  background: linear-gradient(180deg, #2A3A43 27%, #1C282D 83%);
+  border-color: transparent;
+  color: #000;
+}
+.btn_color_out button:hover {
+  background: #000 !important;
+  border-color: transparent;
+  color: #FFF;
+}
+
+.theme-green .bs-datepicker-head {
+  background-color: #fd6a02 !important;
+}
+.theme-green .bs-datepicker-body table td span.selected, .theme-green .bs-datepicker-body table td.selected span, .theme-green .bs-datepicker-body table td span[class*="select-"]:after, .theme-green .bs-datepicker-body table td[class*="select-"] span:after {
+  background-color: #fd6a02 !important
+}
+.theme-green .bs-datepicker-body table td.week span {
+  color: #fd6a02 !important;
+}
+.usertable_area tr:nth-child(2n) td {
+  background: #fff;
+  color: #000;
+}
+
+.changePasPopModal .modal-header {
+  background: #b44d02;
+  color: #fff;
+}

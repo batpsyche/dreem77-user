@@ -1,0 +1,78 @@
+.jdmlimiter.login {
+
+    background-size: cover;
+}
+.header_main {
+    background: #12107a;
+    color: #FFF;
+}
+.logoinds {
+    color: #FFF !important;
+}
+.livetv_heading[_ngcontent-c6] {
+    background: #000 !important;
+}
+.account_overview[_ngcontent-c6] .credit[_ngcontent-c6] {
+    background: #12107a !important;
+}
+a.ptboxcolrd[_ngcontent-c6] {
+    background:#12107a !important
+}
+.btn-info {
+    color: #fff;
+    background-color: #000 !important;
+    border-color: #333 !important;
+}
+.time_zone{
+    color: #000 !important;
+
+}
+
+.wrap {
+    background:rgba(18, 16, 122, 0.7) !important;
+}
+.login-btn1 {
+    background-color: #000!important;
+    color: #FFF !important;
+}
+/*.mainlogo_left img {
+    width: 92px;
+}*/
+.mainlogo_left {
+    width: 17%;
+    float: left;
+    padding-top: 0;
+}
+.account_overview .credit{
+    background: #000 !important;
+}
+.livetv_heading {
+    background: #000000;
+}
+.btn_color_out button {
+    background: #12107a !important;
+    border-color: transparent;
+    color: #FFF;
+}
+.btn_color_out button:hover {
+    background: #000 !important;
+    border-color: transparent;
+    color: #FFF;
+}
+
+.theme-green .bs-datepicker-head {
+    background-color: #12107a !important;
+}
+.theme-green .bs-datepicker-body table td span.selected, .theme-green .bs-datepicker-body table td.selected span, .theme-green .bs-datepicker-body table td span[class*="select-"]:after, .theme-green .bs-datepicker-body table td[class*="select-"] span:after {
+    background-color: #12107a !important;
+}
+.theme-green .bs-datepicker-body table td.week span {
+    color: #12107a !important;
+}
+.usertable_area tr:nth-child(2n) td {
+    background: #fff;
+    color: #000;
+}
+.dropdown-menu.dropdown-menu-right a:hover {
+    background: #12107a;
+}

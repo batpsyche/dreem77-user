@@ -1,0 +1,149 @@
+<div class="right_atspart" *ngIf="betHistory != undefined">
+      <h1 class="binding">Bet History </h1>
+
+  <form name="Master">
+    <div class="row">
+
+
+        <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12 padding">
+          <label>From Date </label>
+          <input type="text"  [ngModelOptions]="{standalone: true}"
+                 class="form-control"
+
+                 #dp="bsDatepicker"
+                 [(ngModel)]="fromDateValue"
+                 bsDatepicker >
+
+        </div>
+        <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12 padding">
+          <label>To Date </label>
+          <input type="text"  [ngModelOptions]="{standalone: true}"
+                 class="form-control"
+
+                 #dp="bsDatepicker"
+                 [(ngModel)]="toDateValue"
+                 [(ngModel)]="toDateValue"
+                 bsDatepicker>
+
+        </div>
+        <div class="col-lg-4 col-sm-4 greenButton" >
+          <label>&nbsp; </label>
+
+          <button type="button" [ngClass]="{'active':IsBtnActive==1}" class="btn btn-success" (click)="FilterBetHistory('M',1)">Matched</button>
+          <button type="button" [ngClass]="{'active':IsBtnActive==2}" class="btn btn-success" (click)="FilterBetHistory('U',2)">Unmatched</button>
+          <button type="button" [ngClass]="{'active':IsBtnActive==3}" class="btn btn-success" (click)="FilterBetHistory('P',3)">Past</button>
+
+        </div>
+
+
+
+        <div class="form-group  col-lg-4 col-md-2 col-sm-12 col-xs-12 padding btn_out_margin btn_color_out pdl-0">
+          <label class="forblan_label">&nbsp;</label>
+          <button type="button" class="btn btn-primary" (click)="getHistory(1);">Search</button>
+          <button type="button" class="btn btn-primary" (click)="ResetAll();">Reset</button>
+          <button type="button" class="btn btn-primary" (click)="downloadCsv();">Download CSV</button>
+
+        </div>
+
+
+
+      
+    </div>
+
+  </form>
+
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="usertable_area">
+        <div class="table-responsive" *ngIf="betHistory != ''">
+          <table class="table table-striped">
+
+          
+            <thead>
+            <tr>
+              <th>S No.</th>
+              <th *ngIf="IsBtnActive==3">Settled</th>
+              <th *ngIf="IsBtnActive==1">Placed</th>
+              <th>Description</th>
+              <th>Type	</th>
+              <th>Odds	</th>
+              <th>Stack	</th>
+              <th *ngIf="IsBtnActive==1">Liability
+              </th>
+              <th *ngIf="IsBtnActive==1">Potential Profit
+              </th>
+              <th *ngIf="IsBtnActive==3">Profit/Loss	</th>
+              <th *ngIf="IsBtnActive==3">Status	</th>
+              <th>Ip Address	</th>
+
+            </tr>
+              </thead>
+  <tbody>
+            
+            <tr *ngFor="let bets of betHistory | paginate: config;trackBy: trackByFn;let index=index; ">
+              <td>{{(page-1)*config.itemsPerPage+index+1}}</td>
+
+              <td > {{bets.placed *1000|date:'medium'}}	</td>
+              <td >{{bets.match_name}}<br>{{bets.selection_name}}-{{bets.market_name}} |{{bets.sport_name}}<br>Bet ID:{{bets.bet_id}}|Round Id:{{bets.market_id}}|Placed:{{bets.placed *1000|date}}	</td>
+                <td><span class="badge " [ngClass]="{'badge-info':bets.is_back == '1','badge-danger':bets.is_back == '0'}"> {{bets.is_back == '1'?'Back':'Lay'}}</span><br><span class="red ng-scope" *ngIf="bets.delete_status == 2"><br> -&gt; Void</span>	</td>
+              <td>{{bets.odds}}	</td>
+              <td>{{bets.stack}}	</td>
+              <td *ngIf="IsBtnActive==1" [ngClass]="{'green':bets.liability>0,'red':bets.liability<0}">{{bets.liability}}
+              </td>
+              <td *ngIf="IsBtnActive==1" [ngClass]="{'green':bets.potential_profit>0,'red':bets.potential_profit<0}">{{bets.potential_profit}}	</td>
+              <td *ngIf="IsBtnActive==3" [ngClass]="{'green':bets.profit_loss>0,'red':bets.profit_loss<0}">{{bets.profit_loss}}	</td>
+              <td *ngIf="IsBtnActive==3" [ngClass]="{'green':bets.status == 'WON','red':bets.status  == 'LOST','blueabon':bets.status == 'ABANDONED'}">{{bets.status}}	</td>
+              <td>{{bets.ip_address}}	</td>
+
+            </tr>
+
+
+
+
+            </tbody></table>
+
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 " *ngIf="betHistory != ''">
+          <div class="row">
+
+
+
+            <div class="total-box fornto_vod clearfix">
+              <div class="col-sm-6" >
+                <h3 class="total-green" *ngIf="IsBtnActive==1">Total Liability: <span
+                  [ngClass]="{'green':total_liability>0,'red':total_liability<0}"> {{total_liability}}</span></h3>
+              </div>
+              <div class="col-sm-6">
+                <h3 class="total-green">Total Profit: <span
+                  [ngClass]="{'green':total_potential_profit>0,'red':total_potential_profit<0}">{{total_potential_profit }}</span></h3>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+  <div class="row" *ngIf="betHistory != undefined">
+    <div class="col-sm-12">
+
+      <ng-container *ngIf="config.totalItems>10">
+        <pagination-controls  (pageChange)="pageChange($event)"
+                              class="my-pagination"></pagination-controls>
+      </ng-container>
+
+    </div>
+
+  </div>
+  <div class="row" *ngIf="betHistory != undefined">
+    <div class="col-sm-12" *ngIf="betHistory == ''">
+      <p>No Record Found</p>
+    </div>
+  </div>
+
+</div>

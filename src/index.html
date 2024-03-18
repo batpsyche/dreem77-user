@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title ></title>
+
+  <base href="/">
+
+  <link rel="icon" type="image/x-icon" id="faviconIcon" >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://www.google.com/recaptcha/api.js?render=6LfI0agUAAAAAOVCkSrcC2vSr98vH8FTZ_No_ABa"></script>
+  <script type="text/javascript" src="https://tvbetframe13.com/assets/frame.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+</head>
+<body  >
+  <app-root></app-root>
+</body>
+<link rel="stylesheet" type="text/css" id="theme" >
+
+</html>
+<script>
+  // document.body.style.backgroundImage =  "url(" + window.location.origin+'/api/v1/uploads/pattern.png' + ")";
+  document.getElementById('faviconIcon').href=window.location.origin+'/api/v1/uploads/favicon.ico';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var data=JSON.parse(this.responseText)
+      document.getElementById('theme').href='assets/css/'+data.data.theam_code+'.css';
+      document.title=data.data.site_title;
+
+    }
+  };
+  xhttp.open("GET",'/api/v1/globalConstant', true);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.send();
+
+  </script>

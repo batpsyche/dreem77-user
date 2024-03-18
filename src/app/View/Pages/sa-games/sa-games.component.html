@@ -1,0 +1,16 @@
+<div class="right_atspartMid ng-scope">
+  <div class="padding">
+    <div class="container-fluid">
+      <div class="row">
+
+        <ng-container *ngFor="let games of SAGAMES">
+          <div class="col-md-3 mt-2" (click)="getLaunchURLForGame(games)" style="cursor: pointer;">
+            <!-- <img [src]="games.image_url" [alt]="games.gameName"> -->
+            {{games.gameName}}
+          </div>
+        </ng-container>
+        
+      </div>
+    </div>
+  </div>
+</div>

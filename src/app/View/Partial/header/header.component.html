@@ -1,0 +1,65 @@
+<header>
+  <div class="header_main">
+    <div class="boxed-layout-wrapper">
+
+      <div class="mainlogo_left">
+        <div class="menu_hiddenicon"><i class="fa fa-bars" (click)="addMenuClass()"></i></div><a
+          (click)="gotoHome()"><img src="{{logo}}" alt="logo"></a>
+      </div>
+      <div class="mainheader_right">
+        <div class="headerinner_left"> 
+          <div class="enter_mttop">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type='text' class="form-control" (keyup)='fetchUsers()' (click)='searchboxClicked($event);'
+              [(ngModel)]='searchText' placeholder="">
+            <ul id='searchResult' *ngIf="searchText_len>0">
+              <li (click)='CallSelectedItem(result)' *ngFor="let result of searchResult ;index as i">
+                {{ result.name }}
+              </li>
+            </ul>
+            <ul id='searchResult' *ngIf="searchResult==0 && searchText!=''">
+              <li>
+                No matches found <span *ngIf="searchText!=''"> for {{searchText}}</span>.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="headerinner_right">
+          <ul>
+            <li>
+              <p class="last-login">Main {{Balance}}</p>
+            </li>
+            <li>
+              <p class="last-login">Exposure {{Liability}}</p>
+            </li>
+            <!-- <li class="nav-item dropdown no-arrow mx-1 notifications" (click)="getAllNotification();showsubmenus1();">
+              <a><i class="fa fa-bell fa-fw"></i><span class="" *ngIf="notificationListCount != 0">
+                  <h6 [ngClass]="{'notificationCount':notificationListCount != 0}">{{notificationListCount}}</h6>
+                </span></a>
+              <div class="dropdown-menu dropdown-menu-right show " [hidden]="!showsubmenu1">
+                <span *ngFor="let message of notificationList">{{message.message}}</span>
+              </div>
+            </li> -->
+            <li class="nav-item dropdown no-arrow mx-1" (click)="showsubmenus()">
+              <a class="nav-link dropdown-toggle logoinds"><i class="fa fa-cog"></i>
+                Account
+              </a>
+              <div class="dropdown-menu dropdown-menu-right show " [hidden]="!showsubmenu">
+                <a class="dropdown-item" (click)="gotoReports('Bethistory')">My Bets</a>
+                <a class="dropdown-item" (click)="gotoReports('ProfitLoss')">Betting Profit and Loss</a>
+                <a class="dropdown-item" (click)="gotoReports('AccountStatement')">Account Statement</a>
+                <a class="dropdown-item" (click)="goToChipHistory();">Transfer Statement</a>
+                <a class="dropdown-item" (click)="gotoReports('casinoresult');">Casino Result Report </a>
+                <a class="dropdown-item " (click)="gotoReports('casino-history');">Casino History</a>
+                <a class="dropdown-item " (click)="goToChangePass();">Change Password</a>
+                <a class="dropdown-item " (click)="logout()"><i class="fa fa-sign-out"></i> Logout</a>
+              </div>
+
+            </li>
+            <!-- <li><a (click)="logout()" class="logoinds"><i class="fa fa-sign-out"></i> Logout</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

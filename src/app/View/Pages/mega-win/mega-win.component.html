@@ -1,0 +1,137 @@
+<div class="right_atspartMid ng-scope">
+  <div class="padding">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="selectedTab === 1" data-toggle="tab" href="#home"
+          (click)="selectedTab = 1">Table Games</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="selectedTab === 2" data-toggle="tab" href="#roulette"
+          (click)="selectedTab = 2">Roulette</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="selectedTab === 3" data-toggle="tab" href="#blackjack"
+          (click)="selectedTab = 3">Blackjack</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="selectedTab === 4" data-toggle="tab" href="#slot"
+          (click)="selectedTab = 4">Slot</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="selectedTab === 6" data-toggle="tab" href="#live-games"
+          (click)="selectedTab = 6">Live Games</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="selectedTab === 7" data-toggle="tab" href="#multihand-poker"
+          (click)="selectedTab = 7">Multihand
+          Poker</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="selectedTab === 8" data-toggle="tab" href="#pyramid-poker"
+          (click)="selectedTab = 8">Pyramid Poker</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="selectedTab === 9" data-toggle="tab" href="#video-poker"
+          (click)="selectedTab = 9">Video Poker</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content mt-3">
+      <div class="tab-pane container" [ngClass]="(selectedTab === 1)? 'active' :'fade' " id="home">
+        <div class="container-fluid">
+          <div class="row">
+            <ng-container *ngFor="let game of tableGames">
+              <div class="col-md-3 mt-2" style="cursor: pointer;">
+                <img src="{{game.image_url}}" alt="{{game.gameName}}" (click)="getLaunchURLForGame(game)">
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane container" [ngClass]="(selectedTab === 2)? 'active' :'fade' " id="roulette">
+        <div class="container-fluid">
+          <div class="row">
+            <ng-container *ngFor="let game of roulette">
+              <div class="col-md-3 mt-2" style="cursor: pointer;">
+                <img src="{{game.image_url}}" alt="{{game.gameName}}" (click)="getLaunchURLForGame(game)">
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane container" [ngClass]="(selectedTab === 3)? 'active' :'fade' " id="blackjack">
+        <div class="container-fluid">
+          <div class="row">
+            <ng-container *ngFor="let game of blackJack">
+              <div class="col-md-3 mt-2" style="cursor: pointer;">
+                <img src="{{game.image_url}}" alt="{{game.gameName}}" (click)="getLaunchURLForGame(game)">
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane container" [ngClass]="(selectedTab === 4)? 'active' :'fade' " id="slot">
+        <div class="container-fluid">
+          <div class="row">
+            <ng-container *ngFor="let game of slotGames">
+              <div class="col-md-3 mt-2" style="cursor: pointer;">
+                <img src="{{game.image_url}}" alt="{{game.gameName}}" (click)="getLaunchURLForGame(game)">
+              </div>
+            </ng-container>
+            <ng-container *ngFor="let game of classicSlot">
+              <div class="col-md-3 mt-2" style="cursor: pointer;">
+                <img src="{{game.image_url}}" alt="{{game.gameName}}" (click)="getLaunchURLForGame(game)">
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane container" [ngClass]="(selectedTab === 6)? 'active' :'fade' " id="live-games">
+        <div class="container-fluid">
+          <div class="row">
+            <ng-container *ngFor="let game of liveGames">
+              <div class="col-md-3 mt-2" style="cursor: pointer;">
+                <img src="{{game.image_url}}" alt="{{game.gameName}}" (click)="getLaunchURLForGame(game)">
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane container" [ngClass]="(selectedTab === 7)? 'active' :'fade' " id="multihand-poker">
+        <div class="container-fluid">
+          <div class="row">
+            <ng-container *ngFor="let game of multihandPoker">
+              <div class="col-md-3 mt-2" style="cursor: pointer;">
+                <img src="{{game.image_url}}" alt="{{game.gameName}}" (click)="getLaunchURLForGame(game)">
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane container" [ngClass]="(selectedTab === 8)? 'active' :'fade' " id="pyramid-poker">
+        <div class="container-fluid">
+          <div class="row">
+            <ng-container *ngFor="let game of pyramidPoker">
+              <div class="col-md-3 mt-2" style="cursor: pointer;">
+                <img src="{{game.image_url}}" alt="{{game.gameName}}" (click)="getLaunchURLForGame(game)">
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane container" [ngClass]="(selectedTab === 9)? 'active' :'fade' " id="video-poker">
+        <div class="container-fluid">
+          <div class="row">
+            <ng-container *ngFor="let game of videoPoker">
+              <div class="col-md-3 mt-2" style="cursor: pointer;">
+                <img src="{{game.image_url}}" alt="{{game.gameName}}" (click)="getLaunchURLForGame(game)">
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

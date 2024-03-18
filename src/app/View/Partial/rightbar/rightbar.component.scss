@@ -1,0 +1,404 @@
+
+.switch_box {
+  padding: 6px 0;
+}
+.betsilip_sec {
+  padding: 6px;
+  max-height: 70vh;
+  overflow-x: hidden;
+  margin-bottom: 22px;
+}
+.mobilebox1 {
+  position: relative;
+}
+.tab_bg {
+  background: #fff;
+  padding: 4px;
+}
+.hideChildren>div{
+  display: none;
+}
+.bet_back {
+  background: #a7d8fd;
+  font-size: 11px;
+  position: relative;
+  padding: 5px;
+}
+.bet_lay {
+  background: #fac9d1;
+}
+.liability {
+  padding: 7px;
+}
+.tab_bg {
+  background: #fff;
+  padding: 4px;
+}
+ul, li {
+  margin: 0;
+  list-style-type: none;
+}
+.first_row ul li {
+  display: inline-block;
+  margin-bottom: 3px;
+  margin-right: 3px;
+}
+
+.smg_texfill {
+  padding: 2px;
+}
+.bet_fields .form-control {
+  padding: 5px 7px;
+  font-size: 12px;
+}
+.bet_fields .odds_tex li:nth-child(2) .form-group {
+  position: relative;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+ul.odds_tex {
+  width: 100%;
+  display: inline-block;
+}
+.bet_fields {
+  position: relative;
+}
+.form-control {
+  display: block;
+  width: 100%;
+
+  line-height: 1.25;
+  color: #495057;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.remove_all {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 7px;
+}
+.text-right {
+  text-align: right!important;
+}
+div#exTab1 a {
+  cursor: pointer;
+}
+.remove_all ul li:last-child button {
+  color: #bf3e35;
+  border: solid 1px #dedede;
+  background: #dedede;
+  font-size: 13px;
+  padding: 3px 6px;
+
+}
+.liability {
+  padding:0px 7px;
+}
+.liability span {
+  font-size: 13px;
+  color: #000;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+p {
+  font-family: Poppins-Regular;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666;
+  margin: 0;
+}
+
+.first_row li:last-child [type="button"] {
+  background: #fff;
+  color: #000;
+  border: 0;
+  padding: 6px;
+}
+.bet_fields i.fa.fa-window-close {
+  position: absolute;
+  right: 3px;
+  top: 20px;
+  color: #8c1000;
+  font-size: 17px;
+  cursor: pointer;
+  border-color: #8c1000;
+}
+.bet_fields .odds_tex li {
+  width: 30%;
+  display: inline-block;
+  float: left;
+  margin-right: 5px;
+}
+.betsilip_sec h5 {
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 41px;
+}
+.betsilip_sec h5 {
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 41px;
+}
+div#exTab1 ul.nav.nav-pills {
+  width: 100%;
+  display: inline-block;
+}
+.betsilip_sec .nav-pills {
+  margin-bottom: 6px;
+}
+.betsilip_sec .nav-pills a {
+  background: #dedbd7;
+  color: #0f2327;
+  padding: 8px 12px;
+  font-size: 10px;
+  margin: 0 2px;
+  font-weight: 500;
+}
+.betsilip_sec .nav-pills .active {
+  background: #fff;
+  color: #111;
+}
+div#exTab1 ul.nav.nav-pills li {
+  width: auto;
+  display: inline-block;
+  vertical-align: top;
+}
+.edit_stakes {
+  float: right;
+}
+.bet_lay {
+  background: #fac9d1;
+}
+a.ptboxcolrd{
+  width: 100%;
+  display: inline-block;
+  background: #1f5058;
+  color: #fff !important;
+  padding: 5px 10px;
+  margin-top: 5px;
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+.sessionbet_vj tr td {
+  font-size: 12px;
+}
+.sessionbet_vj thead {
+  font-size: 12px;
+}
+/*ul.betsdlip_openbts li {
+  margin-right: 10px;
+}*/
+.betsdlip_openbts li a {
+  padding: 10px 14px !important;
+}
+.avail_userlistblanc li {
+  font-size: 12px;
+  color: #000;
+}
+.avail_userlistblanc span {
+  font-size: 10px;
+  font-weight:600;}
+.green {
+  color: green !important;
+}
+.red {
+  color: red !important;
+}
+ul.avail_userlistblanc {
+  transform-origin: center top;
+  background: #fff;
+  padding: 10px 12px;
+  border: 1px solid #1f5058;
+  z-index: 11;
+  top: 30px;
+  left: 0;
+  width: 100%;
+}
+a.activebetslip {
+  background: #fff !important;
+}
+.betsilip_sec h5 {
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 41px;
+}
+.betsilip_sec h5 {
+  border-bottom: solid 1px #d8d8d8;
+  font-size: 14px;
+  color: #757575;
+  margin-bottom: 15px;
+}
+.bet_fields .form-group:last-child span {
+  line-height: 27px;
+}
+label {
+  margin: 0;
+  display: block;
+}
+.before_lay:before {
+  background: #fac9d1!important;
+}
+.sigma_olomouc label {
+  font-size: 13px;
+  color: #000;
+  font-weight: 400;
+  position: relative;
+  padding-left: 13px;
+}
+.sigma_olomouc label:before {
+  content: "";
+  background: #a7d8fd;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 5px;
+  left: 0;
+}
+.lay-head{
+  background: #fac9d1!important;
+}
+.back-head{
+  background: #a6d8ff!important;
+}
+[type="checkbox"]:checked + label, [type="checkbox"]:not(:checked) + label {
+  position: relative;
+  padding-left: 22px;
+  cursor: pointer;
+  line-height: 18px;
+  display: inline-block;
+  color: #666;
+  font-size: 13px;
+}
+
+@media screen and (max-width:1023px) {
+
+  .betsdlip_openbts li a {
+    padding: 10px 7px !important;
+    font-size: 12px !important;
+  }
+
+}
+.sigma_olomouc a {
+  font-size: 13px;
+  color: #000;
+  font-weight: 500;
+}
+a.ptboxcolrd i {
+  float: right;
+}
+button.clsActive {
+  background: #4d9871 !important;
+  color: white !important;
+}
+
+.switch_box .form_text {
+  width: 20%;
+  float: left;
+  margin: 0 1px;
+}
+.switch_box {
+  width: 100%;
+  float: left;
+  padding-bottom: 0px;
+}
+
+.maineds_odform {position: relative; right: 0; top: -27px; width: 80%; float: right;}
+
+.switch_box .form_text .btn_active {
+  background: #4d9871;
+  color: #fff;
+}
+.form_text button.btn.btn_default {
+  width: 100%;
+  background: #d9dee0;
+  display: inline-block;
+  border: solid 1px #09262b;
+  text-align: center;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  color: #000;
+  font-size: 12px;
+  font-weight: normal;
+  padding: 4px 2px;
+}
+
+.form_text .form_button{
+  width: 100%;
+  background: #4d9871;
+  display: inline-block;
+  border: solid 1px #09262b;
+  text-align: center;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: normal;
+  padding: 4px 2px;
+}
+
+.form_text .form_button a {color: #fff;}
+
+
+.account_overview .iner_form {
+  padding-left: 15px;
+}
+li.form_text .form-control {
+  height: 30px;
+  font-size: 11px;
+  padding: 6px;
+}
+.remove_all.text-right ul li {
+  width: auto;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+
+.remove_all ul li a.clsActive {
+  background: #4d9871;
+  color: #fff;
+}
+.fixed-header {
+  position: fixed;
+  z-index:999;
+  height: 50px;
+}
+
+#frugalmap {
+  height: 300px;
+  width: 100%;
+  top:  0px;
+  position: relative;
+  background: #2ab4c0;
+}
+
+.mat-elevation-z5 {
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+}
+span.error {
+  color: red;
+}
+
+ul.avail_userlistblanc {
+  position: absolute;
+  width: 99% !important;
+  display: inline-block;
+  margin-left: 1px;
+}
+canvas.video {
+  height: 100%;
+  width: 100%;
+  padding-right: 6px;
+}

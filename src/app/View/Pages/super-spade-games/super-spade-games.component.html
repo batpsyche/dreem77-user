@@ -1,0 +1,17 @@
+<div class="right_atspartMid ng-scope">
+  <div class="padding">
+    <div class="container-fluid">
+      <div class="row">
+
+        <ng-container *ngFor="let games of SSP_GAMES">
+          <div class="col-md-3 mt-2" (click)="goToSuperSpade(games)" style="cursor: pointer;">
+            <img [src]="games.imagePath" [alt]="games.game_name">
+          </div>
+        </ng-container>
+        <div class="col-md-3 mt-2" style="cursor: pointer;" (click)="goToMultiTable()">
+          <img src="assets/SSP/mt.jpg" alt="multi-table">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

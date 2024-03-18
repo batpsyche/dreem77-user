@@ -1,0 +1,105 @@
+<div class="right_atspart">
+  <h1 class="binding">Casino Report </h1>
+  <form name="Master">
+    <div class="row">
+
+
+      <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12 padding">
+        <label>From Date </label>
+        <input type="text" [ngModelOptions]="{standalone: true}" class="form-control" #dp="bsDatepicker"
+          [(ngModel)]="reportData.from_date" bsDatepicker>
+
+      </div>
+      <div class="form-group  col-lg-2 col-md-2 col-sm-12 col-xs-12 padding">
+        <label>To Date </label>
+        <input type="text" [ngModelOptions]="{standalone: true}" class="form-control" #dp="bsDatepicker"
+          [(ngModel)]="reportData.to_date" bsDatepicker>
+      </div>
+
+      <div class="form-group col-lg-2 col-md-2 col-sm-12 col-xs-12 padding">
+        <label>Search By Game: </label>
+        <select name="cars" id="cars" class="form-control" [(ngModel)]="reportData.game_type">
+          <option value="1">Brino Casino</option>
+          <option value="2">Super Spade Games</option>
+        </select>
+
+      </div>
+
+      <div class="form-group  col-lg-4 col-md-2 col-sm-12 col-xs-12 padding btn_out_margin btn_color_out pdl-0">
+        <label class="forblan_label">&nbsp;</label>
+        <button type="button" class="btn btn-primary"
+          (click)="this.getReport(this.userDetails, this.betReportData.page, this.reportData.game_type, this.reportData.from_date, this.reportData.to_date);">Search</button>
+        <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+
+      </div>
+
+
+
+
+    </div>
+
+  </form>
+
+  <div class="row">
+    <!-- end of Tab -->
+    <div class="col-lg-12 col-md-12 col-sm-12 ">
+      <div class="lst_master_top clearfix">
+        <div class="usertable_area clearfix top_table_form member_listing">
+
+          <div class="onepagehitdiv  table-responsive login_table" *ngIf="betReportData != null">
+
+            <table class="table onepagehit table-condensed table-striped  my-market">
+              <thead>
+                <tr class="">
+                  <th>S No.</th>
+                  <th>Date</th>
+                  <th>Round ID</th>
+                  <th>Game</th>
+                  <th>Profit and Loss</th>
+                  <th>Stack</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let record of betReportData?.data | paginate: config;trackBy: trackByFn;let i=index;">
+                  <td>
+                    {{(((config?.currentPage - 1) * config.itemsPerPage )+1)+i}}
+                  </td>
+                  <td>
+                    {{record?.created_at * 1000 | date:'medium'}}
+                  </td>
+                  <td><a class="result-details">{{record?.market_id}}</a>
+                  </td>
+                  <td>{{record?.reffered_name}}</td>
+                  <td [ngClass]="{'green':record.pl>0,'red':record.pl<0}">{{record?.pl}}</td>
+                  <td>{{record?.stack}}</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+
+        </div>
+
+        <div class="row" *ngIf="betReportData?.data?.length > 0">
+          <div class="col-sm-12">
+
+            <ng-container *ngIf="config?.totalItems > 10">
+              <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
+            </ng-container>
+
+          </div>
+
+        </div>
+        <div class="row" *ngIf="betReportData && betReportData?.totalRecords == 0">
+          <div class="col-sm-12">
+            <p>No data available in table
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

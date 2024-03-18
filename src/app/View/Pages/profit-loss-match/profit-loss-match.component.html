@@ -1,0 +1,131 @@
+<div class="right_atspart">
+  <div class="right_bodyareainner">
+    <div class="body_heading">
+      <h1 class="binding">Profit And Loss</h1></div>
+    <div class="row">
+      <div class="col-lg-2 col-sm-4">
+        <div class="form-group">
+          <label>From date </label>
+          <input type="text"
+                 class="form-control"
+
+                 #dp="bsDatepicker"
+                 [(ngModel)]="fromDateValue"
+                 bsDatepicker [(bsValue)]="fromDateValue">
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-sm-4">
+        <div class="form-group">
+          <label>To date </label>
+          <input type="text"
+                 class="form-control"
+
+                 #dp="bsDatepicker"
+                 [(ngModel)]="toDateValue"
+                 bsDatepicker [(bsValue)]="toDateValue">
+        </div>
+      </div>
+      <div class="col-lg-6 col-sm-8">
+        <div class="form-group">
+          <label>&nbsp;&nbsp; </label>
+          <button class="btn-info blueSubmit" (click)="getprofitLossMatchWise()">Submit</button>
+            <button type="button" class="btn-info blueSubmit  btnCsv"  (click)="downloadCsv();">Download CSV</button>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="profitLoss != undefined">
+      <div class="col-sm-12">
+
+        <div class="usertable_area">
+          <div class="table-responsive">
+            <table class="table"  >
+
+             <thead>
+              <tr>
+                <th>UID</th>
+                <th>Stake</th>
+                <th>Player P/L</th>
+                <th> Comm.</th>
+                <th *ngIf="super_admin_commission_type == 1"> Casino Comm.</th>
+                  <ng-container *ngIf="globals.PdcData != undefined">
+
+                  <th *ngIf="globals.PdcData.is_pdc_charge == '1'"> Pdc</th>
+                  </ng-container>
+                <th> Upline P/L</th>
+              </tr>
+              </thead>
+
+               <tbody>
+              <ng-container *ngFor="let profit of profitLoss;trackBy: trackByFn;let i=index; ">
+
+                <tr >
+                  <td>    <span *ngIf="(hideme[i]==false || hideme[i]==undefined) || isExpend!=i" class="table_icon"> <a
+                    class="btn-success"
+                    (click)="getprofitLossMatch(profit.match_id);hideme[i] = !hideme[i];isExpend=i">+</a> </span>
+                    <span *ngIf="hideme[i]==true && isExpend==i" class="table_icon"> <a class="btn-success"
+                                                                                        (click)="hideme[i] = !hideme[i];isExpend=-1">-</a> </span>
+                    {{profit.reffered_name.split("->")[0]}}-> {{profit.reffered_name.split("->")[1]}}
+                  </td>
+                  <td>{{profit.stack}}</td>
+                  <td [ngClass]="{'green':profit.player_p_l>0,'red':profit.player_p_l<0}">{{profit.player_p_l}}</td>
+                 <!-- <td [ngClass]="{'green':profit.downline_p_l>0,'red':profit.downline_p_l<0}">{{profit.downline_p_l}}</td>-->
+                  <td [ngClass]="{'green':profit.super_comm>0,'red':profit.super_comm<0}">{{profit.super_comm}}</td>
+                    <td *ngIf="super_admin_commission_type == 1" [ngClass]="{'green':profit.super_admin_commission>0,'red':profit.super_admin_commission<0}">{{profit.super_admin_commission}}</td>
+                    <ng-container *ngIf="globals.PdcData != undefined">
+
+                    <td *ngIf="globals.PdcData.is_pdc_charge == '1'" [ngClass]="{'green':profit.pdc_pl>0,'red':profit.pdc_pl<0}">{{profit.pdc_pl}}</td>
+                    </ng-container>
+                  <td [ngClass]="{'green':profit.upline_p_l>0,'red':profit.upline_p_l<0}">{{profit.upline_p_l}}</td>
+
+                </tr>
+
+
+                          <ng-container *ngIf="hideme[i]==true && isExpend==i">
+                              <tr  *ngFor="let profitDetail of profitLossMatchwise;let j=index">
+                              <td>    {{profitDetail.reffered_name.split("->")[2]}}
+                              </td>
+                              <td>{{profitDetail.stack}}</td>
+                              <td [ngClass]="{'green':profitDetail.player_p_l>0,'red':profitDetail.player_p_l<0}">{{profitDetail.player_p_l}}</td>
+                            <!--  <td [ngClass]="{'green':profitDetail.downline_p_l>0,'red':profitDetail.downline_p_l<0}">{{profitDetail.downline_p_l}}</td>-->
+                              <td [ngClass]="{'green':profitDetail.super_comm>0,'red':profitDetail.super_comm<0}">{{profitDetail.super_comm}}</td>
+                                  <td *ngIf="super_admin_commission_type == 1" [ngClass]="{'green':profitDetail.super_admin_commission>0,'red':profitDetail.super_admin_commission<0}">{{profitDetail.super_admin_commission}}</td>
+
+                                  <ng-container *ngIf="globals.PdcData != undefined">
+
+                                  <td *ngIf="globals.PdcData.is_pdc_charge == '1'" [ngClass]="{'green':profitDetail.pdc_pl>0,'red':profitDetail.pdc_pl<0}">{{profitDetail.pdc_pl}}</td>
+                                  </ng-container>
+                              <td [ngClass]="{'green':profitDetail.upline_p_l>0,'red':profitDetail.upline_p_l<0}">{{profitDetail.upline_p_l}}</td>
+
+                              </tr>
+
+                          </ng-container>
+
+              </ng-container>
+
+              </tbody>
+            </table>
+
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12" *ngIf="profitLoss == ''">
+        <span class="notfound">No Records Found</span>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
