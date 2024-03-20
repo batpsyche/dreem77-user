@@ -1,6 +1,3 @@
-
-
-
 /**** new page css start  ****/
 td.mttd1 {
   width: 34%;
@@ -12,18 +9,17 @@ td.mttd3 {
   width: 54%;
 }
 td.mttd1 a {
-  color: #2789ce!important;
+  color: #2789ce !important;
   font-size: 12px;
   font-weight: 700;
 }
 
-td.mttd1 i{
+td.mttd1 i {
   color: #e4c41e !important;
   font-size: 16px;
   padding-top: 6px;
   padding-right: 0;
 }
-
 
 .commonbtn {
   font-weight: 700;
@@ -36,7 +32,6 @@ td.mttd1 i{
 td.mttd2 span {
   display: block;
   font-size: 11px;
-
 }
 .mat-stat {
   color: green;
@@ -57,7 +52,6 @@ a.pink_btn {
   display: inline-block;
 }
 
-
 .bet_table table tr td span {
   display: block;
 }
@@ -73,11 +67,11 @@ a.pink_btn {
 }
 .bet_table a {
   color: #005baa;
-  font-family: 'Open Sans',sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
 }
 a.td_btn {
-  color: #000!important;
+  color: #000 !important;
   cursor: pointer;
   float: left;
   font-weight: 700;
@@ -89,7 +83,7 @@ a.td_btn {
 }
 .bet_table table td.team_name {
   width: 35%;
-  padding: 6px 10px!important;
+  padding: 6px 10px !important;
 }
 .top_xtow {
   background: #ededed;
@@ -122,7 +116,7 @@ a.td_btn {
   font-size: 21px;
 }
 .binding {
-  background: linear-gradient(#184438 0,#14805e 80%);
+  background: linear-gradient(#184438 0, #14805e 80%);
   color: #ffffff;
   font-weight: 700;
   font-size: 12px !important;
@@ -146,7 +140,7 @@ a.td_btn {
 .betright {
   text-align: center;
 }
-.betbox{
+.betbox {
   width: 110px;
   text-align: center;
   padding: 3px 0 0px 7px;
@@ -164,3 +158,83 @@ i.fa.fa-play-circle {
   text-decoration: none;
 }
 
+// Games Icons
+
+// Games Icons
+
+.casinoicons {
+  position: relative;
+  // background-color: #ddd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  min-width: 150px;
+  // border: 4px solid #000;
+  cursor: pointer;
+}
+.casinoicons img {
+  max-width: 140px;
+}
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+.casinoicons-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 0px;
+  color: #fff;
+  padding: 5px;
+  margin: 0px;
+  bottom: -15px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 0px 0px 4px 4px;
+  font-size: 11px;
+  background-color: #1b5a7f;
+}
+@keyframes blinkcasino {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+.casino {
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.new-launch {
+  color: #fff;
+  animation: blinkcasino 0.8s linear infinite;
+}
+.coming-soon.casino img,
+.new-launch.casino img {
+  width: 100%;
+}
+
+.m-r-20 {
+  margin-right: 20px !important;
+}
+.m-b-10 {
+  margin-bottom: 10px !important;
+}
+.m-t-10 {
+  margin-top: 10px !important;
+}
+.d-inline-block {
+  display: inline-block !important;
+}
