@@ -19,9 +19,10 @@
 .jdmlimiter {
   width: 100%;
   margin: 0 auto;
-    overflow-y: auto;
+  overflow-y: auto;
 }
-.login-box-body, .register-box-body {
+.login-box-body,
+.register-box-body {
   background: none;
   padding: 0;
   border-top: 0;
@@ -57,39 +58,41 @@
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #fff;
-  background-color: inherit;
+  // color: #fff;
+  color: #000;
+  // background-color: inherit;
+  background-color: white;
   background-image: none;
   border: 0px;
   border-bottom: 1px solid #fff;
   border-radius: 3px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   margin-bottom: 5px;
-
 }
 .login-btn1 {
   //background-color: #fff!important;
-  padding: 5px!important;
+  padding: 5px !important;
   width: 100%;
-  background-color: #183f45 !important;
-    color: #FFFFFF !important;
-    border-bottom-color: #0b1c1f !important;
-    border-right-color: #0b1c1f !important;
+  font-weight: bold;
+  // background-color: #183f45 !important;
+  background: linear-gradient(-180deg, #14805e 0, #184438 100%);
+  color: #ffffff !important;
+  border-bottom-color: #0b1c1f !important;
+  border-right-color: #0b1c1f !important;
 }
-.form-control::placeholder {color: #fff;}
+.form-control::placeholder {
+  color: #fff;
+}
 
 .login-box-body .form-group.has-feedback {
   float: left;
   width: 100%;
   box-sizing: border-box;
-
 }
-
 
 .login-error {
   color: red;
 }
-
 
 //input:-webkit-autofill,
 // input:-webkit-autofill:hover,
@@ -99,11 +102,17 @@
 //   -webkit-text-fill-color: #fff !important;
 // }
 
-input[_ngcontent-c1]:-webkit-autofill, input[_ngcontent-c1]:-webkit-autofill:active, input[_ngcontent-c1]:-webkit-autofill:focus, input[_ngcontent-c1]:-webkit-autofill:hover{color:#fff!important;background:transparent!important;}
-.login-footer-bottom{
+input[_ngcontent-c1]:-webkit-autofill,
+input[_ngcontent-c1]:-webkit-autofill:active,
+input[_ngcontent-c1]:-webkit-autofill:focus,
+input[_ngcontent-c1]:-webkit-autofill:hover {
+  color: #fff !important;
+  background: transparent !important;
+}
+.login-footer-bottom {
   padding: 20px 10px;
-    background-color: #183f45;
-    color: #fff;
-    text-align: center;
-    font-size: 12px;
+  background-color: #183f45;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
 }
