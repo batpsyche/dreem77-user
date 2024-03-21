@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   footerLogo;
   mobile;
   super_admin_commission_type;
+  runningYearText;
   Flogo = "assets/loginimages/Flogo.png";
   constructor(
     private http: HttpClient,
@@ -47,7 +48,8 @@ export class LoginComponent implements OnInit {
   is_show_apk;
   ngOnInit() {
     this.footerLogo = this.global.Url + "uploads/footer.png";
-
+    let currentYear = new Date().getFullYear();
+    this.runningYearText = `${currentYear - 1} - ${currentYear}`;
     this.logo = this.global.Url + "uploads/logo.png";
     // this.bg_logo = this.global.Url + 'uploads/bg_logo.png';
     // this.bg_logo = this.global.Url + 'uploads/bg_logo.png' || 'assets/loginimages/login-bg.jpg';
