@@ -1,0 +1,292 @@
+/**** new page css start  ****/
+td.mttd1 {
+  width: 34%;
+}
+td.mttd2 {
+  width: 12%;
+}
+td.mttd3 {
+  width: 54%;
+}
+td.mttd1 a {
+  color: #2789ce !important;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+td.mttd1 i {
+  color: #e4c41e !important;
+  font-size: 16px;
+  padding-top: 6px;
+  padding-right: 0;
+}
+
+.commonbtn {
+  font-weight: 700;
+  padding: 0 5px;
+  background-color: #0a92a5;
+  font-style: italic;
+  color: #fff;
+  border-radius: 4px;
+}
+td.mttd2 span {
+  display: block;
+  font-size: 11px;
+}
+.mat-stat {
+  color: green;
+  font-size: 12px !important;
+}
+
+a.blue_btn {
+  background: #72bbef;
+  color: #000;
+}
+a.pink_btn {
+  background: #faa9ba;
+  color: #000;
+}
+
+.betbox {
+  width: 33.33%;
+  display: inline-block;
+}
+
+.bet_table table tr td span {
+  display: block;
+}
+
+.td_btn span {
+  font-weight: 500;
+}
+.bet_table .table tbody td a.td_btn {
+  padding: 3px 2px;
+  border-radius: 0;
+  width: 50%;
+  font-size: 10px;
+}
+.bet_table a {
+  color: #005baa;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+}
+a.td_btn {
+  color: #000 !important;
+  cursor: pointer;
+  float: left;
+  font-weight: 700;
+  height: 56px;
+  padding: 10px 2px;
+  text-align: center;
+  vertical-align: middle;
+  width: 50%;
+}
+.bet_table table td.team_name {
+  width: 35%;
+  padding: 6px 10px !important;
+}
+.top_xtow {
+  background: #ededed;
+}
+.bet_table table {
+  margin: 0;
+  color: #000;
+  font-size: 13px;
+}
+.newdesign .bet_table {
+  border: none;
+}
+.bet_table.table-bordered table tr td {
+  border: 0px !important;
+  padding: 0px 0px 0px 5px;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd !important;
+}
+
+.bet_table table tr td span.ng-binding.mat-stat {
+  color: green;
+}
+.bet_table table tr td span i[style="color: green;"] {
+  font-size: 21px;
+  padding-right: 5px;
+  line-height: 30px;
+  vertical-align: middle;
+}
+.right_atspartMid h1 {
+  font-size: 21px;
+}
+.binding {
+  background: linear-gradient(#184438 0, #14805e 80%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 12px !important;
+  line-height: 25px;
+  padding-left: 10px;
+  margin-bottom: 0;
+  padding-top: 3px;
+}
+
+.inplay .sport_blk {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 25px 0px 0px 0px;
+  margin-bottom: 10px;
+}
+
+.odsallmat_part tbody {
+  width: 100%;
+  float: left !important;
+}
+.betright {
+  text-align: center;
+}
+.betbox {
+  width: 110px;
+  text-align: center;
+  padding: 3px 0 0px 7px;
+  display: inline-block;
+  font-weight: 700;
+}
+i.fa.fa-play-circle {
+  font-size: 21px;
+  padding-right: 5px;
+  line-height: 30px;
+  vertical-align: middle;
+}
+
+.betright a:hover {
+  text-decoration: none;
+}
+
+// Games Icons
+
+// Games Icons
+
+.casinoicons {
+  position: relative;
+  // background-color: #ddd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  min-width: 150px;
+  // border: 4px solid #000;
+  cursor: pointer;
+}
+.casinoicons img {
+  max-width: 140px;
+}
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+.casinoicons-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 0px;
+  color: #fff;
+  padding: 5px;
+  margin: 0px;
+  bottom: -15px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 0px 0px 4px 4px;
+  font-size: 11px;
+  background-color: #1b5a7f;
+}
+@keyframes blinkcasino {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+.casino {
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.new-launch {
+  color: #fff;
+  animation: blinkcasino 0.8s linear infinite;
+}
+.coming-soon.casino img,
+.new-launch.casino img {
+  width: 100%;
+}
+
+.m-r-20 {
+  margin-right: 20px !important;
+}
+.m-b-10 {
+  margin-bottom: 10px !important;
+}
+.m-t-10 {
+  margin-top: 10px !important;
+}
+.d-inline-block {
+  display: inline-block !important;
+}
+.main-sidebar,
+.left-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 0;
+  min-height: 100%;
+  width: 230px;
+  z-index: 810;
+}
+#menu2 ul li {
+  clear: both;
+  padding: 0;
+  background: #fff;
+  border-bottom: unset;
+}
+#menu2 a {
+  display: block;
+  position: relative;
+  border-bottom: 1px solid #d2d6e2;
+  color: #223869;
+  padding: 0.3rem 1rem;
+  font-size: 13px;
+}
+
+#menu2 a:hover:before {
+  content: ""; /* Ensure content property is set for pseudo-elements */
+  background-image: url("https://aura444.com/sprite-icon.38e629d70915dd18762b.png");
+  background-position: 100% -1025px;
+  height: 25px;
+  width: 23px;
+  background-repeat: no-repeat;
+  line-height: 25px;
+  display: inline-block; /* Add display property */
+  float: right;
+  border-bottom: 1px solid #d2d6e2;
+}
+
+#menu2 a:before {
+  content: "";
+  background-image: url(https://aura444.com/sprite-icon.38e629d70915dd18762b.png);
+  background-position: 100% -1000px;
+  height: 25px;
+  width: 23px;
+  background-repeat: no-repeat;
+  line-height: 25px;
+  top: 6px;
+  right: 6px;
+  display: inline-block;
+  float: right;
+  border-bottom: 1px solid #d2d6e2;
+}
