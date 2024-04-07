@@ -89,6 +89,11 @@
                                         </a>
                                         <img src="assets/loginimages/greendot.png" alt="img"> -->
                           <a (click)="clickOnLogin()">{{ match.name }}</a>
+                          <span
+                            *ngIf="match.inplay"
+                            class="font-weight-bolder inPlayAnim d-inline">
+                            In Play
+                          </span>
                           <div class="commainbtv">
                             <span
                               *ngIf="match.day > 1"
@@ -107,7 +112,7 @@
                           <span *ngIf="match.inplay"
                             ><i
                               *ngIf="match.inplay"
-                              class="fa fa-television"></i
+                              class="fa fa-television mr-1"></i
                             >{{ match.match_date | date : "dd MMM, HH:mm" }}
                             <a
                               class="fancyBtn"

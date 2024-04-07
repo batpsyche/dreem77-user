@@ -52,6 +52,11 @@
                     <a (click)="gotoUserMatchOddsPage(match)">{{
                       match.name
                     }}</a>
+                    <span
+                      *ngIf="match.inplay"
+                      class="font-weight-bolder inPlayAnim d-inline">
+                      In Play
+                    </span>
                     <div class="commainbtv">
                       <span
                         *ngIf="match.day > 1"
