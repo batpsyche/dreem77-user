@@ -238,3 +238,20 @@ img {
 .d-inline-block {
   display: inline-block !important;
 }
+@keyframes inPlayBlink {
+  0% {
+    color: red;
+  }
+  50% {
+    color: rgb(17, 101, 77);
+  }
+  75% {
+    color: #152869;
+  }
+  100% {
+    color: red;
+  }
+}
+.inPlayAnim {
+  animation: inPlayBlink 1s ease-in-out 0s infinite forwards normal;
+}
