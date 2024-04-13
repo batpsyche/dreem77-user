@@ -349,11 +349,25 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   clickOnLogin() {
+    let modal = document.getElementById("confirm-betting");
+    modal.style.display = "block";
+    // this.matchservice.logout().subscribe(
+    //   (result) => {
+    //     window.location.assign("/login");
+    //   },
+    //   (err) => {}
+    // );
+  }
+  redirectToLogin() {
     this.matchservice.logout().subscribe(
       (result) => {
         window.location.assign("/login");
       },
       (err) => {}
     );
+  }
+  closeConfirmBetting() {
+    let modal = document.getElementById("confirm-betting");
+    modal.style.display = "none";
   }
 }
