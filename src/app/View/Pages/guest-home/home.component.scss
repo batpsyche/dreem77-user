@@ -307,3 +307,10 @@ img {
 .inPlayAnim {
   animation: inPlayBlink 1s ease-in-out 0s infinite forwards normal;
 }
+.login-panel-container {
+  text-align: center;
+  background: linear-gradient(-180deg, #14805e 0, #184438 100%);
+  padding: 0.3rem;
+  color: white;
+  font-weight: bold;
+}
